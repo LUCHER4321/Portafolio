@@ -1,33 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+//import { useState } from 'react'
+//import reactLogo from './assets/react.svg'
+//import viteLogo from '/vite.svg'
 import './App.css'
+import { projects } from './data/projects'
+import { Project } from './scripts/Project'
+import { PersonalLink } from './scripts/PersonalLink';
+import { links } from './data/links';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const collapse = {borderCollapse: "collapse", width: "100%"} as React.CSSProperties;
+  const border = {border: "1px solid"} as React.CSSProperties;
+  const start = {textAlign: "start"} as React.CSSProperties;
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Portafolio Luciano Hernández</h1>
+      <h2 style={start}>Enlaces</h2>
+      <PersonalLink.Table
+        links={links}
+        height={24}
+        tdStyle={start}
+      />
+      <h2 style={start}>Proyectos</h2>
+      <Project.Table
+        projects={projects}
+        height={50}
+        style={collapse}
+        thStyle={border}
+        tdStyle={border}
+      />
     </>
   )
 }
