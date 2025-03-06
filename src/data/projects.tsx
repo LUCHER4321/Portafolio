@@ -1,7 +1,7 @@
 import { Project } from "../scripts/Project";
 
 export const projects = [
-    ["Portafolio", "https://github.com/LUCHER4321/Portafolio", "/", "/icon.png"],
+    ["Portafolio", "https://github.com/LUCHER4321/Portafolio", "/Portafolio", "/Portafolio/icon.png"],
     ["Librería chrono-phylo-tree", "https://github.com/LUCHER4321/chrono-phylo-tree", "https://phylotree.netlify.app/", "https://phylotree.netlify.app/logo.png"],
     ["Carrusel de Imágenes", "https://github.com/LUCHER4321/Carrusel-Imagenes", "https://lucher4321.github.io/Carrusel-Imagenes/"],
     ["Conversor de Unidades", "https://github.com/LUCHER4321/Conversor-Unidades", "https://lucher4321.github.io/Conversor-Unidades"],
