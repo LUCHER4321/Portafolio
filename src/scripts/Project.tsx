@@ -1,3 +1,4 @@
+import { CustomTable } from "./CustomTable";
 import { ImageLink } from "./ImageLink";
 
 export class Project {
@@ -15,51 +16,29 @@ export class Project {
         this.logo = logo;
     }
 
-    private Row = ({height, style}: tableProps) => {
-        return (
-            <tr>
-                <td style={style}>{this.name}</td>
-                <td style={style}>
-                    <ImageLink
-                        link={this.repository}
-                        image={Project.GitHubLogo}
-                        height={height}
-                    />
-                </td>
-                <td style={style}>
-                    {this.website && <ImageLink
-                        link={this.website}
-                        image={this.logo}
-                        height={height}
-                    />}
-                </td>
-            </tr>
-        );
-    }
-
-    private static Header = ({style}: tableProps) => {
-        return (
-            <tr>
-                <th style={style}>Nombre</th>
-                <th style={style}>Repositorio</th>
-                <th style={style}>Sitio Web</th>
-            </tr>
-        );
-    }
-
     static Table({projects, style, height, thStyle, tdStyle}: tableProps) {
         return(
-            <table style={style}>
-                <thead>
-                    <Project.Header style={thStyle}/>
-                </thead>
-                <tbody>
-                    {projects?.map((item, index) => (
-                        <item.Row height={height} key={index} style={tdStyle}/>
-                    ))}
-                </tbody>
-            </table>
-        )
+            <CustomTable
+                headers={["Proyecto", "Repositorio", "Sitio Web"]}
+                data={projects ?? []}
+                row={p => p ? [
+                    p.name,
+                    <ImageLink
+                        link={p.repository}
+                        image={Project.GitHubLogo}
+                        height={height}
+                    />,
+                    p.website && <ImageLink
+                        link={p.website}
+                        image={p.logo}
+                        height={height}
+                    />
+                ] : []}
+                style={style}
+                thStyle={thStyle}
+                tdStyle={tdStyle}
+            />
+        );
     }
 }
 
