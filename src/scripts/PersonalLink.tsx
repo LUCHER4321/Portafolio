@@ -1,3 +1,4 @@
+import { CustomTable } from "./CustomTable";
 import { ImageLink } from "./ImageLink";
 
 export class PersonalLink {
@@ -11,31 +12,22 @@ export class PersonalLink {
         this.logo = logo;
     }
     
-    private Row = ({height, style}: tableProps) => {
+    static Table({links, style, height, tdStyle}: tableProps) {
         return (
-            <tr>
-                <td style={style}>{this.name}:</td>
-                <td style={style}>
+            <CustomTable
+                data={links ?? []}
+                row={l => [
+                    l.name + ":",
                     <ImageLink
-                        link={this.link}
-                        image={this.logo}
+                        link={l.link}
+                        image={l.logo}
                         height={height}
                     />
-                </td>
-            </tr>
+                ]}
+                style={style}
+                tdStyle={tdStyle}
+            />
         );
-    }
-    
-    static Table({links, style, height, tdStyle}: tableProps) {
-        return(
-            <table style={style}>
-                <tbody>
-                    {links?.map((item, index) => (
-                        <item.Row height={height} key={index} style={tdStyle}/>
-                    ))}
-                </tbody>
-            </table>
-        )
     }
 }
 
