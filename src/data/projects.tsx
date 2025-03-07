@@ -9,4 +9,5 @@ export const projects = [
     ["Lista de Tareas", "https://github.com/LUCHER4321/Lista-Tareas", "https://lucher4321.github.io/Lista-Tareas"],
     ["Calculadora de Propinas", "https://github.com/LUCHER4321/Calculadora-Propinas", "https://lucher4321.github.io/Calculadora-Propinas"],
     ["Postulación a RECEMED", "https://github.com/LUCHER4321/RECEMED"],
+    ["Power BI Netflix", "https://github.com/LUCHER4321/Power-BI-Netflix", "https://aka.ms/AAuyv0k", "https://1000logos.net/wp-content/uploads/2022/12/Power-BI-Logo.png"]
 ].map(l => new Project(l[0], l[1], l.length > 2 ? l[2] : undefined, l.length > 3 ? l[3] : undefined));
