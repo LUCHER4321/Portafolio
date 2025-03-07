@@ -25,7 +25,7 @@ export const CustomTable = <T,>({
                 ))}
             </thead>}
             <tbody>
-                {data?.map((item, index) => (
+                {data.map((item, index) => (
                     <tr key={index}>
                         {row(item).map((cell, cellIndex) => (
                             <td key={cellIndex} style={tdStyle}>{cell}</td>
