@@ -5,15 +5,15 @@ export class Project {
     name: string;
     repository: string;
     website?: string;
-    logo?: string;
+    icon?: string;
 
     private static GitHubLogo = "https://logo.clearbit.com/github.com";
 
-    constructor(name: string, repository: string, website: string | undefined = undefined, logo: string | undefined = undefined) {
+    constructor(name: string, repository: string, website: string | undefined = undefined, icon: string | undefined = undefined) {
         this.name = name;
         this.repository = repository;
         this.website = website;
-        this.logo = logo;
+        this.icon = icon;
     }
 
     static Table({projects, style, height, thStyle, tdStyle}: tableProps) {
@@ -30,7 +30,7 @@ export class Project {
                     />,
                     p.website && <ImageLink
                         link={p.website}
-                        image={p.logo}
+                        image={p.icon}
                         height={height}
                     />
                 ] : []}
