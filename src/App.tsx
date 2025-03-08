@@ -55,7 +55,7 @@ function App() {
         className="flex flex-wrap"
         languajes={languajes}
         onClick={toggleLanguaje}
-        buttonClassName="mr-2"
+        buttonClassName="mr-2 mb-2"
         height={l => languajeFilter.includes(l) ? 30 : 15}
       />
       <h2 className="text-start text-2xl font-bold py-5">Proyectos</h2>
