@@ -2,31 +2,33 @@ interface customTableProps<T> {
     headers?: string[];
     data: T[];
     row: (t: T) => any[];
-    style?: string;
-    thStyle?: string;
-    tdStyle?: string;
+    className?: string;
+    thClassName?: string;
+    tdClassName?: string;
 }
 
 export const CustomTable = <T,>({
     headers,
     data,
     row,
-    style,
-    thStyle,
-    tdStyle
+    className,
+    thClassName,
+    tdClassName
 }: customTableProps<T>) => {
     return(
-        <table className={style}>
+        <table className={className}>
             {headers && <thead>
-                {headers.map((item, index) => (
-                    <th key={index} className={thStyle}>{item}</th>
-                ))}
+                <tr>
+                    {headers.map((item, index) => (
+                        <th key={index} className={thClassName}>{item}</th>
+                    ))}
+                </tr>
             </thead>}
             <tbody>
                 {data.map((item, index) => (
                     <tr key={index}>
                         {row(item).map((cell, cellIndex) => (
-                            <td key={cellIndex} className={tdStyle}>{cell}</td>
+                            <td key={cellIndex} className={tdClassName}>{cell}</td>
                         ))}
                     </tr>
                 ))}
