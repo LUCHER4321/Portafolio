@@ -10,7 +10,7 @@ export const projects = [
     ["Calculadora de Propinas", "https://github.com/LUCHER4321/Calculadora-Propinas", "https://lucher4321.github.io/Calculadora-Propinas", undefined, "TypeScript", "JavaScript", "CSS", "HTML"],
     ["Postulación a RECEMED", "https://github.com/LUCHER4321/RECEMED", undefined, undefined, "JavaScript", "CSS", "HTML"],
     ["Power BI Netflix", "https://github.com/LUCHER4321/Power-BI-Netflix", "https://aka.ms/AAuyv0k", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/New_Power_BI_Logo.svg/1200px-New_Power_BI_Logo.svg.png", "Power BI"],
-    ["Noble Corral", "https://github.com/LUCHER4321/Noble-Corral", undefined, undefined, "Power BI", "R"],
+    ["Noble Corral", "https://github.com/LUCHER4321/Noble-Corral", undefined, undefined, "HTML", "Power BI", "R"],
     ["Valoraciones Steam", "https://github.com/LUCHER4321/Valoraciones-Steam", undefined, undefined, "R"],
     ["Edificios Ecotect", "https://github.com/LUCHER4321/Edificios-Ecotect", undefined, undefined, "R"],
     ["Pacientes ACV", "https://github.com/LUCHER4321/Pacientes-ACV", undefined, undefined, "R"],
