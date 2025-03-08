@@ -45,7 +45,7 @@ export class Project {
 interface tableProps {
     projects?: Project[];
     height?: number;
-    style?: React.CSSProperties;
-    thStyle?: React.CSSProperties;
-    tdStyle?: React.CSSProperties;
+    style?: string;
+    thStyle?: string;
+    tdStyle?: string;
 }
