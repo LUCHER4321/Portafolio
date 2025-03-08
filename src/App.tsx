@@ -64,8 +64,8 @@ function App() {
         languajeFilter={languajeFilter}
         height={50}
         lanHeight={20}
-        className="border-collapse w-full"
-        thClassName="border border-solid"
+        className="border-collapse"
+        thClassName="border border-solid px-2"
         tdClassName="border border-solid p-2.5"
       />
     </>
