@@ -12,7 +12,7 @@ export class PersonalLink {
         this.logo = logo;
     }
     
-    static Table({links, style, height, tdStyle}: tableProps) {
+    static Table({links, className, height, tdClassName}: tableProps) {
         return (
             <CustomTable
                 data={links ?? []}
@@ -24,8 +24,8 @@ export class PersonalLink {
                         height={height}
                     />
                 ]}
-                style={style}
-                tdStyle={tdStyle}
+                className={className}
+                tdClassName={tdClassName}
             />
         );
     }
@@ -34,6 +34,6 @@ export class PersonalLink {
 interface tableProps {
     links?: PersonalLink[];
     height?: number;
-    style?: string;
-    tdStyle?: string;
+    className?: string;
+    tdClassName?: string;
 }
