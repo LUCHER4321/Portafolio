@@ -8,8 +8,8 @@ interface ImageLinkProps {
 
 export const ImageLink = ({link, image = undefined, height = 128}: ImageLinkProps) => {
     return (
-        <a href={link} target="_blank">
-            <img height={height} src={image ?? defaultImage}/>
+        <a href={link} target="_blank" className="flex justify-center">
+            <img style={{height: height}} src={image ?? defaultImage}/>
         </a>
     );
 }
