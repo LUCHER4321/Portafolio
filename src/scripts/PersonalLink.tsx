@@ -34,6 +34,6 @@ export class PersonalLink {
 interface tableProps {
     links?: PersonalLink[];
     height?: number;
-    style?: React.CSSProperties;
-    tdStyle?: React.CSSProperties;
+    style?: string;
+    tdStyle?: string;
 }
