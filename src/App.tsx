@@ -6,62 +6,80 @@ import { projects } from './data/projects'
 import { Project } from './scripts/Project'
 import { PersonalLink } from './scripts/PersonalLink';
 import { links } from './data/links';
-import { Languaje } from './scripts/Languaje';
-import { languajes } from './data/languajes';
+import { Language } from './scripts/Language';
+import { languages } from './data/languages';
+import { codeText, getLanguageOptions } from './scripts/translate';
 
 function App() {
-  const [languajeFilter, setLanguajeFilter] = useState(languajes);
+  const [language, setLanguage] = useState("spanish");
+  const [languageFilter, setLanguageFilter] = useState(languages);
+  const trLanguages = getLanguageOptions();
 
-  const addLanguaje = (l: Languaje) => {
-    setLanguajeFilter(languajeFilter.concat([l]));
+  const addLanguage = (l: Language) => {
+    setLanguageFilter(languageFilter.concat([l]));
   };
 
-  const quitLanguaje = (l: Languaje) => {
-    setLanguajeFilter(languajeFilter.filter(lan => lan !== l));
+  const quitLanguage = (l: Language) => {
+    setLanguageFilter(languageFilter.filter(lan => lan !== l));
   };
 
-  const toggleLanguaje = (l: Languaje) => {
-    if(languajeFilter.includes(l)){
-      quitLanguaje(l);
+  const toggleLanguage = (l: Language) => {
+    if(languageFilter.includes(l)){
+      quitLanguage(l);
     }
     else{
-      addLanguaje(l);
+      addLanguage(l);
     }
   }
 
-  const allLanguajes = () => {
-    setLanguajeFilter(languajes);
+  const allLanguages = () => {
+    setLanguageFilter(languages);
   }
 
-  const noLanguajes = () => {
-    setLanguajeFilter([]);
+  const noLanguages = () => {
+    setLanguageFilter([]);
   }
 
   return (
     <>
-      <h1>Portafolio Luciano Hernández</h1>
-      <h2 className="text-start text-2xl font-bold py-5">Enlaces</h2>
+      <div className="text-end mb-4">
+        <select
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+          className="bg-white dark:bg-[#242424] rounded"
+        >
+          {Array.from(trLanguages).map(([key, value], index) => (
+            <option value={key} key={index}>
+              {value}
+            </option>
+          ))}
+        </select>
+      </div>
+      <h1>{codeText("ttl00", language)}</h1>
+      <h2 className="text-start text-2xl font-bold py-5">{codeText("stt00", language)}</h2>
       <PersonalLink.Table
+        language={language}
         links={links}
         height={24}
         tdClassName="text-start py-0.5"
       />
-      <h2 className="text-start text-2xl font-bold py-5">Lenguajes y Herraminetas</h2>
-      <div className="flex flex-row mb-2">
-        <button onClick={allLanguajes} className="mr-2">Mostrar Todo</button>
-        <button onClick={noLanguajes} >Ocultar Todo</button>
+      <h2 className="text-start text-2xl font-bold py-5">{codeText("stt01", language)}</h2>
+      <div className="flex flex-row">
+        <button onClick={allLanguages} className="mr-2">{codeText("btn00", language)}</button>
+        <button onClick={noLanguages} >{codeText("btn01", language)}</button>
       </div>
-      <Languaje.List
+      <Language.List
         className="flex flex-wrap"
-        languajes={languajes}
-        onClick={toggleLanguaje}
-        buttonClassName="mr-2 mb-2"
-        height={l => languajeFilter.includes(l) ? 30 : 15}
+        languages={languages}
+        onClick={toggleLanguage}
+        buttonClassName="mr-2 mt-2"
+        height={l => languageFilter.includes(l) ? 30 : 15}
       />
-      <h2 className="text-start text-2xl font-bold py-5">Proyectos</h2>
+      <h2 className="text-start text-2xl font-bold py-5">{codeText("stt02", language)}</h2>
       <Project.Table
+        language={language}
         projects={projects}
-        languajeFilter={languajeFilter}
+        languageFilter={languageFilter}
         height={50}
         lanHeight={20}
         className="border-collapse"
