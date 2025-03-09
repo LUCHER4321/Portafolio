@@ -2,22 +2,22 @@ import { CustomTable } from "./CustomTable";
 import { ImageLink } from "./ImageLink";
 
 export class PersonalLink {
-    name: string;
+    name: Map<string,string>;
     link: string;
     logo?: string;
 
     constructor(name: string, link: string, logo: string | undefined = undefined) {
-        this.name = name;
+        this.name = new Map(name.split(";").map(s => [s.split(":")[0], s.split(":")[1]]));
         this.link = link;
         this.logo = logo;
     }
     
-    static Table({links, className, height, tdClassName}: tableProps) {
+    static Table({links, className, height, tdClassName, language}: tableProps) {
         return (
             <CustomTable
                 data={links ?? []}
                 row={l => [
-                    l.name + ":",
+                   ( l.name.get(language) ?? [...l.name.values()][0]) + ":",
                     <ImageLink
                         link={l.link}
                         image={l.logo}
@@ -36,4 +36,5 @@ interface tableProps {
     height?: number;
     className?: string;
     tdClassName?: string;
+    language: string;
 }
