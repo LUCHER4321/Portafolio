@@ -1,14 +1,14 @@
 import { CustomTable } from "./CustomTable";
 import { ImageLink } from "./ImageLink";
-import { Languaje } from "./Languaje";
-import { languajes } from "../data/languajes";
+import { Language } from "./Language";
+import { languages } from "../data/languages";
 
 export class Project {
     name: string;
     repository: string;
     website?: string;
     icon?: string;
-    languajes: string[] = [];
+    languages: string[] = [];
 
     private static GitHubLogo = "https://logo.clearbit.com/github.com";
 
@@ -17,16 +17,16 @@ export class Project {
         this.repository = repository;
         this.website = website;
         this.icon = icon;
-        this.languajes = languages;
+        this.languages = languages;
     }
 
-    static Table({projects, className, height, thClassName, tdClassName, languajeFilter, lanHeight}: tableProps) {
+    static Table({projects, className, height, thClassName, tdClassName, languageFilter, lanHeight}: tableProps) {
         return(
             <CustomTable
                 headers={["Proyecto", "Repositorio", "Lenguajes", "Sitio Web"]}
-                data={languajeFilter ? projects.filter(p => {
-                    for(const l of languajeFilter){
-                        if(p.languajes.includes(l.name)) return true;
+                data={languageFilter ? projects.filter(p => {
+                    for(const l of languageFilter){
+                        if(p.languages.includes(l.name)) return true;
                     }
                     return false;
                 }) : projects}
@@ -37,8 +37,8 @@ export class Project {
                         image={Project.GitHubLogo}
                         height={height}
                     />,
-                    <Languaje.List
-                        languajes={languajes.filter(l => p.languajes.includes(l.name))}
+                    <Language.List
+                        languages={languages.filter(l => p.languages.includes(l.name))}
                         className="flex flex-wrap"
                         height={lanHeight}
                     />, //lang.get(p)?.join(", ") ?? "...",
@@ -62,6 +62,6 @@ interface tableProps {
     className?: string;
     thClassName?: string;
     tdClassName?: string;
-    languajeFilter?: Languaje[];
+    languageFilter?: Language[];
     lanHeight?: number;
 }
