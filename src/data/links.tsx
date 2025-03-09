@@ -2,6 +2,7 @@ import { PersonalLink } from "../scripts/PersonalLink";
 
 export const links = [
     ["lan:LinkedIn", "https://www.linkedin.com/in/luciano-hern%C3%A1ndez-76b8b9257/", "https://logo.clearbit.com/linkedin.com"],
+    ["spanish:Correo;english:Mail", "mailto:lhernandezr@udd.cl", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg/1200px-Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg.png"],
     ["lan:GitHub", "https://github.com/LUCHER4321", "https://logo.clearbit.com/github.com"],
     ["spanish:Curriculum en Español;english:Resume in Spanish", "https://drive.google.com/file/d/1Y1aUuTzrS1YxRh1zetu38unMMlBcjnJz/view?usp=sharing", "https://www.svgrepo.com/show/28209/pdf.svg"],
     ["spanish:Curriculum en Inglés;english:Resume in English", "https://drive.google.com/file/d/1AWzMUdG7-dOwoMyu5dfKeI3KtCGc90zV/view?usp=sharing", "https://www.svgrepo.com/show/28209/pdf.svg"],
