@@ -61,7 +61,7 @@ function App() {
         language={language}
         links={links}
         height={24}
-        tdClassName="text-start py-0.5"
+        tdClassName="text-start py-0.5 pr-2"
       />
       <h2 className="text-start text-2xl font-bold py-5">{codeText("stt01", language)}</h2>
       <div className="flex flex-row">
