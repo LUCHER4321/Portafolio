@@ -65,15 +65,15 @@ function App() {
       />
       <h2 className="text-start text-2xl font-bold py-5">{codeText("stt01", language)}</h2>
       <div className="flex flex-row">
-        <button onClick={allLanguages} className="mr-2">{codeText("btn00", language)}</button>
-        <button onClick={noLanguages} >{codeText("btn01", language)}</button>
+        <button onClick={allLanguages} className="mr-2 bg-green-500">{codeText("btn00", language)}</button>
+        <button onClick={noLanguages} className="bg-red-500">{codeText("btn01", language)}</button>
       </div>
       <Language.List
         className="flex flex-wrap"
         languages={languages}
         onClick={toggleLanguage}
-        buttonClassName="mr-2 mt-2"
-        height={l => languageFilter.includes(l) ? 30 : 15}
+        buttonClassName={l => `mr-2 mt-2 bg-${languageFilter.includes(l) ? "green" : "red" }-500`}
+        height={30}
       />
       <h2 className="text-start text-2xl font-bold py-5">{codeText("stt02", language)}</h2>
       <Project.Table
