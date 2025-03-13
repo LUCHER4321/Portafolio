@@ -11,7 +11,7 @@ export const projects = [
     ["spanish:Reloj en Tiempo Real;english:Real Time Clock", "https://github.com/LUCHER4321/Reloj", "https://lucher4321.github.io/Reloj", undefined, "TypeScript", "JavaScript", "CSS", "HTML"],
     ["spanish:Pacientes ACV;english:CVA Patients", "https://github.com/LUCHER4321/Pacientes-ACV", undefined, undefined, "R"],
     ["lan:Power BI Netflix", "https://github.com/LUCHER4321/Power-BI-Netflix", "https://aka.ms/AAuyv0k", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/New_Power_BI_Logo.svg/1200px-New_Power_BI_Logo.svg.png", "Power BI"],
-    ["spanish:Librería multiple-sorting-array;english:multiple-sorting-array Library", "https://github.com/LUCHER4321/multiple-sorting-array", undefined, undefined, "TypeScript"],
+    ["spanish:Librería multiple-sorting-array;english:multiple-sorting-array Library", "https://github.com/LUCHER4321/multiple-sorting-array", "https://www.npmjs.com/package/multiple-sorting-array", "https://static-production.npmjs.com/58a19602036db1daee0d7863c94673a4.png", "TypeScript"],
     ["spanish:Lista de Tareas;english:To Do List", "https://github.com/LUCHER4321/Lista-Tareas", "https://lucher4321.github.io/Lista-Tareas", undefined, "TypeScript", "JavaScript", "CSS", "HTML"],
     ["spanish:Accidentes Cerebrovasculares;english:Cerebrovascular Accidents", "https://github.com/LUCHER4321/ACV", undefined, undefined, "R"],
     ["spanish:Calculadora de Propinas;english:Tip Calculator", "https://github.com/LUCHER4321/Calculadora-Propinas", "https://lucher4321.github.io/Calculadora-Propinas", undefined, "TypeScript", "JavaScript", "CSS", "HTML"],
