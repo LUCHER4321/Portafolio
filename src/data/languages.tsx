@@ -1,6 +1,7 @@
 import { Language } from "../scripts/Language";
 
 export const languages = [
+    ["NPM", "https://static-production.npmjs.com/58a19602036db1daee0d7863c94673a4.png"],
     ["TypeScript", "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png"],
     ["JavaScript", "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/640px-JavaScript-logo.png"],
     ["Tailwind CSS", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1024px-Tailwind_CSS_Logo.svg.png"],
