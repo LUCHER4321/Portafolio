@@ -3,6 +3,7 @@ import { Project } from "../scripts/Project";
 export const projects = [
     ["spanish:Portafolio;english:Portfolio", "https://github.com/LUCHER4321/Portafolio", "https://lucher4321.github.io/Portafolio/", "/Portafolio/icon.png", "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"],
     ["spanish:Librería chrono-phylo-tree;english:chrono-phylo-tree Library", "https://github.com/LUCHER4321/chrono-phylo-tree", "https://phylotree.netlify.app/", "https://phylotree.netlify.app/logo.png", "NPM", "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"],
+    ["spanish:Predicción de Finanzas;english:Finance Prediction", "https://github.com/LUCHER4321/predict-finance", undefined, undefined, "HTML", "R"],
     ["lan:Noble Corral", "https://github.com/LUCHER4321/Noble-Corral", undefined, undefined, "HTML", "Power BI", "R"],
     ["spanish:Carrusel de Imágenes;english:Image Carousel", "https://github.com/LUCHER4321/Carrusel-Imagenes", "https://lucher4321.github.io/Carrusel-Imagenes/", undefined, "TypeScript", "JavaScript", "CSS", "HTML"],
     ["spanish:Valoraciones Steam;english:Steam Ratings", "https://github.com/LUCHER4321/Valoraciones-Steam", undefined, undefined, "R"],
