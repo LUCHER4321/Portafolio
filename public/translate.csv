@@ -1,7 +1,9 @@
 code;spanish;english
 lan;Español;English
 lbl00;Idioma;Language
-ttl00;Portafolio Luciano Hernández;Luciano Hernández Portfolio
+ttl00;Portfolio Luciano Hernández;Luciano Hernández Portfolio
+stt04;Sobre mí;About me
+prg00;Soy Luciano Hernández, Ingeniero Civil Industrial especializado en finanzas y desarrollo tecnológico. Combino habilidades en gestión financiera, programación (C#, Java, Python, R, etc) y modelado 3D para crear soluciones integrales y eficientes. Con experiencia liderando proyectos multidisciplinarios, desde aplicaciones móviles hasta optimización de procesos, destaco por mi capacidad para analizar datos, automatizar tareas y transformar ideas en resultados concretos. Mi enfoque equilibra precisión técnica, innovación y adaptabilidad, siempre buscando impactar positivamente en cada desafío.;I'm Luciano Hernández, an Industrial Civil Engineer specializing in finance and technological development. I combine skills in financial management, programming (C#, Java, Python, R, etc), and 3D modeling to create comprehensive and efficient solutions. With experience leading multidisciplinary projects, from mobile applications to process optimization, I stand out for my ability to analyze data, automate tasks, and transform ideas into concrete results. My approach balances technical precision, innovation, and adaptability, always seeking to make a positive impact on every challenge.
 stt00;Enlaces;Links
 stt01;Lenguajes y Herramientas;Languages & Tools
 btn00;Mostrar Todo;Show All
@@ -11,3 +13,6 @@ hdr00;Proyecto;Project
 hdr01;Repositorio;Repository
 hdr02;Lenguajes y Herramientas;Languages & Tools
 hdr03;Sitio Web;Web Site
+ttl01;Proyectos hechos con {0};Projects made with {0}
+stt03;Tipos de Proyectos;Types of Projects
+ttl02;Proyectos de {0};{0} Projects
