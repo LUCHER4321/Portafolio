@@ -1,0 +1,29 @@
+import { useSearchParams } from "react-router-dom";
+import { Project } from "../scripts/Project";
+import { projects } from "../data/projects";
+import { useState } from "react";
+import { codeText } from "../scripts/translate";
+import { NavBar } from "../scripts/NavBar";
+
+export const LanguagePage = () => {
+    const [language, setLanguage] = useState("spanish");
+    const [searchParams] = useSearchParams();
+    const lan = searchParams.get("lan") || "";
+    return (
+        <>
+            <NavBar language={language} setLanguage={setLanguage}/>
+            <h1>{codeText("ttl01", language, [lan])}</h1>
+            <div className="flex justify-center mt-4">
+                <Project.Table
+                    projects={projects.filter(p => p.languages.includes(lan))}
+                    language={language}
+                    height={50}
+                    lanSize={20}
+                    className="border-collapse"
+                    thClassName="border border-solid px-2"
+                    tdClassName="border border-solid p-2.5"
+                />
+            </div>
+        </>
+    )
+};
