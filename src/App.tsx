@@ -38,14 +38,14 @@ function App() {
           <h2 className="text-center text-2xl font-bold py-5">{codeText("stt03", language)}</h2>
           <Category.Table
             categories={categories}
-            href={c => `/Portfolio/Category?cat=${c.id}`}
+            href={c => `/Portafolio/Category?cat=${c.id}`}
           />
         </div>
         <div className="flex flex-col sm:w-2/7">
           <h2 className="text-center w-full text-2xl font-bold py-5">{codeText("stt01", language)}</h2>
           <Language.List
             className="flex flex-wrap justify-center"
-            href={l => `/Portfolio/Language?lan=${l.name}`}
+            href={l => `/Portafolio/Language?lan=${l.name}`}
             languages={languages}
             buttonClassName="flex m-1 justify-center p-2.5"
             size={30}
