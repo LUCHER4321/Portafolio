@@ -21,6 +21,7 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
     }
     return (
         <>
+            {projects && <button className="flex opacity-0 fixed top-0 bottom-0 right-0 left-0" onClick={switchProjects}/>}
             <div className="flex fixed justify-between mb-4 w-full px-10 bg-[#6E17A2]/50 sm:bg-[#27273E]/50 top-0 right-0 h-15">
                 <div className="flex flex-row">
                     <a href="/Portafolio/" className="h-full flex items-center justify-center mr-4">
