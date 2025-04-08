@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: "/Portfolio/",
+  base: "/Portafolio/",
   server: {
     hmr: {
       overlay: false,
