@@ -41,7 +41,7 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                                 </td>
                                 <td className={`${categoriesVisible ? "block" : "hidden"} flex flex-col`}>
                                     {categories.map((category, index) => (
-                                        <a href={`/Portafolio/Category?cat=${category.id}`} key={index} className="text-black! dark:text-white!">
+                                        <a href={`/Portafolio/Category?cat=${category.id}`} key={index} className="text-black! dark:text-white! py-2.5">
                                             {category.name.get(language)}
                                         </a>
                                     ))}
@@ -56,7 +56,7 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                                 </td>
                                 <td className={`${languagesVisible ? "block" : "hidden"} flex flex-col`}>
                                     {languages.map((language, index) => (
-                                        <a href={`/Portafolio/Language?lan=${language.name}`} key={index} className="text-black! dark:text-white!">
+                                        <a href={`/Portafolio/Language?lan=${language.name}`} key={index} className="text-black! dark:text-white! py-1.5">
                                             {language.name}
                                         </a>
                                     ))}
