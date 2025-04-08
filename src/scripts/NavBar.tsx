@@ -23,7 +23,7 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
         <>
             <div className="flex fixed justify-between mb-4 w-full px-10 bg-[#6E17A2]/50 sm:bg-[#27273E]/50 top-0 right-0 h-15">
                 <div className="flex flex-row">
-                    <a href="/Portfolio/" className="h-full flex items-center justify-center mr-4">
+                    <a href="/Portafolio/" className="h-full flex items-center justify-center mr-4">
                         <img style={{height: 25}} src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"/>
                     </a>
                     <div className={"flex flex-col" + ( projects ? " bg-[#7616AD]/75" : "")}>
@@ -41,7 +41,7 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                                 </td>
                                 <td className={`${categoriesVisible ? "block" : "hidden"} flex flex-col`}>
                                     {categories.map((category, index) => (
-                                        <a href={`/Portfolio/Category?cat=${category.id}`} key={index} className="text-black! dark:text-white!">
+                                        <a href={`/Portafolio/Category?cat=${category.id}`} key={index} className="text-black! dark:text-white!">
                                             {category.name.get(language)}
                                         </a>
                                     ))}
@@ -56,7 +56,7 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                                 </td>
                                 <td className={`${languagesVisible ? "block" : "hidden"} flex flex-col`}>
                                     {languages.map((language, index) => (
-                                        <a href={`/Portfolio/Language?lan=${language.name}`} key={index} className="text-black! dark:text-white!">
+                                        <a href={`/Portafolio/Language?lan=${language.name}`} key={index} className="text-black! dark:text-white!">
                                             {language.name}
                                         </a>
                                     ))}
