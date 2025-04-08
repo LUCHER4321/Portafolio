@@ -17,11 +17,11 @@ const fetchCSVData = async (filePath: string): Promise<any[]> => {
     return data;
 };
 
-const provisionalData = (filePath: string = "/Portafolio/translate.csv") => (async (filePath: string = "/Portafolio/translate.csv") => {
+const provisionalData = (filePath: string = "/Portfolio/translate.csv") => (async (filePath: string = "/Portfolio/translate.csv") => {
     data0 = await fetchCSVData(filePath);
 })(filePath);
 
-export const codeText = (code: string, language: string, arg: string[] = [], filePath: string = "/Portafolio/translate.csv") => {
+export const codeText = (code: string, language: string, arg: string[] = [], filePath: string = "/Portfolio/translate.csv") => {
     const [data, setData] = useState<any[]>([]);
     useEffect(() => {
         fetchCSVData(filePath).then(setData);
@@ -37,7 +37,7 @@ export const codeText = (code: string, language: string, arg: string[] = [], fil
     }
 };
 
-export const codeTextAlt = async (code: string, language: string, arg: string[] = [], filePath: string = "/Portafolio/translate.csv"): Promise<string> => {
+export const codeTextAlt = async (code: string, language: string, arg: string[] = [], filePath: string = "/Portfolio/translate.csv"): Promise<string> => {
     const data = await fetchCSVData(filePath);
     const row = data.find((row: any) => row.code === code);
     try {
@@ -48,7 +48,7 @@ export const codeTextAlt = async (code: string, language: string, arg: string[] 
     }
 };
 
-export const getLanguageOptions = (filePath: string = "/Portafolio/translate.csv") => {
+export const getLanguageOptions = (filePath: string = "/Portfolio/translate.csv") => {
     const [languageOptions, setLanguageOptions] = useState<Map<string, string>>(new Map());
 
     useEffect(() => {
