@@ -1,4 +1,4 @@
-const defaultImage = "https://cdn-icons-png.flaticon.com/512/25/25284.png";
+const defaultImage = "https://svgsilh.com/svg_v2/1873373.svg";
 
 interface ImageLinkProps {
     link: string;
