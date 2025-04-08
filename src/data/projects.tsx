@@ -1,7 +1,7 @@
 import { Project } from "../scripts/Project";
 
 export const projects = [
-    new Project("spanish:Portafolio;english:Portfolio", ["wb00"], "https://github.com/LUCHER4321/Portafolio", "/Portaflio/", "/Portfolio/icon.png", "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"),
+    new Project("spanish:Portafolio;english:Portfolio", ["wb00"], "https://github.com/LUCHER4321/Portafolio", "/Portaflio/", "/Portafolio/icon.png", "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"),
     new Project("spanish:Librería chrono-phylo-tree;english:chrono-phylo-tree Library", ["wb00", "lb00"], "https://github.com/LUCHER4321/chrono-phylo-tree", "https://phylotree.netlify.app/", "https://phylotree.netlify.app/logo.png", "NPM", "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"),
     new Project("spanish:Predicción de Finanzas;english:Finance Prediction", ["dt00"], "https://github.com/LUCHER4321/predict-finance", undefined, undefined, "HTML", "R"),
     new Project("lan:Noble Corral", ["dt00", "dt01"], "https://github.com/LUCHER4321/Noble-Corral", undefined, undefined, "HTML", "Power BI", "R"),
