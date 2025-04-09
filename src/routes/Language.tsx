@@ -17,8 +17,6 @@ export const LanguagePage = () => {
                 <Project.Table
                     projects={projects.filter(p => p.languages.includes(lan))}
                     language={language}
-                    height={50}
-                    lanSize={20}
                     className="border-collapse"
                     thClassName="border border-solid px-2"
                     tdClassName="border border-solid p-2.5"
