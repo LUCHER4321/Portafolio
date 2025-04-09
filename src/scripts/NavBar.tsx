@@ -25,13 +25,13 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
         <>
             {projects && <button className="flex opacity-0 fixed top-0 bottom-0 right-0 left-0" onClick={switchProjects}/>}
             <div className="flex fixed justify-between mb-4 w-full px-10 bg-[#6E17A2]/50 sm:bg-[#27273E]/50 top-0 right-0 h-15">
-                <div className="flex flex-row align-middle">
+                <div className="flex flex-row">
                     <ImageLink
                         link="/Portafolio/"
                         image="https://cdn-icons-png.flaticon.com/512/25/25694.png"
                         height={25}
                         hoverHeight={32}
-                        className="mr-2 align-middle"
+                        className="mr-2 align-middle!"
                         blank={false}
                     />
                     {links.filter(l => ["LinkedIn", "GitHub"].includes([...l.name.values()][0])).map((link, index) => (
@@ -42,6 +42,7 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                             height={25}
                             hoverHeight={32}
                             className="mx-2 align-middle"
+                            alt={link.name.get(language)}
                         />
                     ))}
                     <div className={"flex flex-col rounded" + ( projects ? " bg-[#7616AD]/75" : "")}>
