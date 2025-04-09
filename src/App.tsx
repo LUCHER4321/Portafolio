@@ -31,6 +31,7 @@ function App() {
             language={language}
             links={links}
             height={24}
+            hoverHeight={32}
             tdClassName="text-start py-0.5 pr-2"
           />
         </div>
@@ -50,6 +51,7 @@ function App() {
             languages={languages}
             buttonClassName="flex m-1 justify-center p-2.5"
             size={30}
+            hoverSize={40}
           />
         </div>
       </div>
