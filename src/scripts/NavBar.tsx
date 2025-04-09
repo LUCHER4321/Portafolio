@@ -2,6 +2,7 @@ import { useState } from "react";
 import { categories } from "../data/categories";
 import { codeText, getLanguageOptions } from "./translate";
 import { languages } from "../data/languages";
+import { links } from "../data/links";
 
 interface NavBarProps {
     language: string;
@@ -27,6 +28,11 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                     <a href="/Portafolio/" className="h-full flex items-center justify-center mr-4">
                         <img style={{height: 25}} src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"/>
                     </a>
+                    {links.filter(l => ["LinkedIn", "GitHub"].includes([...l.name.values()][0])).map((link, index) => (
+                        <a href={link.link} key={index} className="mr-4 items-center h-full flex justify-center">
+                            <img src={link.logo} style={{height: 25}}/>
+                        </a>
+                    ))}
                     <div className={"flex flex-col" + ( projects ? " bg-[#7616AD]/75" : "")}>
                         <button className="bg-white/0! mt-1.5 text-start" onClick={switchProjects}>
                             {codeText("stt02", language)}
