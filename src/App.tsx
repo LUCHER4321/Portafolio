@@ -38,6 +38,7 @@ function App() {
           <h2 className="text-center text-2xl font-bold py-5">{codeText("stt03", language)}</h2>
           <Category.Table
             categories={categories}
+            language={language}
             href={c => `/Portafolio/Category?cat=${c.id}`}
           />
         </div>
