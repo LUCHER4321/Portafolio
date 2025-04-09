@@ -8,14 +8,14 @@ export class Category {
         this.name = new Map(name.split(";").map(s => [s.split(":")[0], s.split(":")[1]]));;
     }
 
-    static Table({ categories, href, className }: tableProps) {
+    static Table({ categories, href, className, language }: tableProps) {
         return (
             <CustomTable
                 data={categories}
                 row={c => [
                     <a href={href?.(c)}>
                         <button className="text-black dark:text-white my-1">
-                            {c.name.get("spanish") ?? [...c.name.values()][0]}
+                            {c.name.get(language) ?? [...c.name.values()][0]}
                         </button>
                     </a>] as any[]}
                 className={className}
@@ -26,6 +26,7 @@ export class Category {
 
 interface tableProps {
     categories: Category[];
+    language: string;
     className?: string;
     href?: (cat: Category) => string;
 }
