@@ -42,11 +42,11 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                             className="mx-2"
                         />
                     ))}
-                    <div className={"flex flex-col" + ( projects ? " bg-[#7616AD]/75" : "")}>
+                    <div className={"flex flex-col rounded" + ( projects ? " bg-[#7616AD]/75" : "")}>
                         <button className="bg-white/0! mt-1.5 text-start" onClick={switchProjects}>
                             {codeText("stt02", language)}
                         </button>
-                        <table className={`${projects ? "block" : "hidden"} bg-[#7616AD]/75`}>
+                        <table className={`${projects ? "block" : "hidden"} bg-[#7616AD]/75 rounded`}>
                             <tbody>
                             <tr className=" align-top">
                                 <td>
