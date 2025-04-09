@@ -1,5 +1,5 @@
-import { CustomTable } from "./CustomTable";
-import { ImageLink } from "./ImageLink";
+import { CustomTable } from "../components/CustomTable";
+import { ImageLink } from "../components/ImageLink";
 
 export class PersonalLink {
     name: Map<string,string>;

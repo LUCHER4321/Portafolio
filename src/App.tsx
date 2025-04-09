@@ -2,13 +2,13 @@ import { useState } from 'react'
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 import './App.css'
-import { PersonalLink } from './scripts/PersonalLink';
+import { PersonalLink } from './classes/PersonalLink';
 import { links } from './data/links';
-import { Language } from './scripts/Language';
+import { Language } from './classes/Language';
 import { languages } from './data/languages';
-import { codeText } from './scripts/translate';
-import { NavBar } from './scripts/NavBar';
-import { Category } from './scripts/Category';
+import { codeText } from './functions/translate';
+import { NavBar } from './components/NavBar';
+import { Category } from './classes/Category';
 import { categories } from './data/categories';
 
 function App() {

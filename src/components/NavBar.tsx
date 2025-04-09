@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { categories } from "../data/categories";
-import { codeText, getLanguageOptions } from "./translate";
+import { codeText, getLanguageOptions } from "../functions/translate";
 import { languages } from "../data/languages";
 import { links } from "../data/links";
 import { ImageLink } from "./ImageLink";

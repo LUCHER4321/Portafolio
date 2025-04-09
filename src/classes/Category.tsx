@@ -1,4 +1,4 @@
-import { CustomTable } from "./CustomTable";
+import { CustomTable } from "../components/CustomTable";
 
 export class Category {
     id: string;

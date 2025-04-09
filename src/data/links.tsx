@@ -1,4 +1,4 @@
-import { PersonalLink } from "../scripts/PersonalLink";
+import { PersonalLink } from "../classes/PersonalLink";
 
 export const links = [
     ["lan:LinkedIn", "https://www.linkedin.com/in/luciano-hern%C3%A1ndez-76b8b9257/", "https://logo.clearbit.com/linkedin.com"],

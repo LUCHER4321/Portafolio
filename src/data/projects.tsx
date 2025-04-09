@@ -1,4 +1,4 @@
-import { Project } from "../scripts/Project";
+import { Project } from "../classes/Project";
 
 export const projects = [
     new Project("spanish:Portafolio;english:Portfolio", ["wb00"], "https://github.com/LUCHER4321/Portafolio", "/Portaflio/", "/Portafolio/icon.png", "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"),

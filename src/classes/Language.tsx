@@ -1,4 +1,4 @@
-import { ImageLink } from "./ImageLink";
+import { ImageLink } from "../components/ImageLink";
 
 export class Language {
     name: string;

@@ -1,8 +1,8 @@
-import { CustomTable } from "./CustomTable";
-import { ImageLink } from "./ImageLink";
+import { CustomTable } from "../components/CustomTable";
+import { ImageLink } from "../components/ImageLink";
 import { Language } from "./Language";
 import { languages } from "../data/languages";
-import { codeText } from "./translate";
+import { codeText } from "../functions/translate";
 import { Category } from "./Category";
 import { categories } from "../data/categories";
 

@@ -1,4 +1,4 @@
-import { Language } from "../scripts/Language";
+import { Language } from "../classes/Language";
 
 export const languages = [
     ["NPM", "https://static-production.npmjs.com/58a19602036db1daee0d7863c94673a4.png"],

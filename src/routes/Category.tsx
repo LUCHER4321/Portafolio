@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { useSearchParams } from "react-router-dom";
-import { NavBar } from "../scripts/NavBar";
-import { Project } from "../scripts/Project";
+import { NavBar } from "../components/NavBar";
+import { Project } from "../classes/Project";
 import { projects } from "../data/projects";
-import { codeText } from "../scripts/translate";
+import { codeText } from "../functions/translate";
 import { categories } from "../data/categories";
-import { Category } from "../scripts/Category";
+import { Category } from "../classes/Category";
 
 export const CategoryPage = () => {
     const [language, setLanguage] = useState("spanish");

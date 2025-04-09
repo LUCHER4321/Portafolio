@@ -1,9 +1,9 @@
 import { useSearchParams } from "react-router-dom";
-import { Project } from "../scripts/Project";
+import { Project } from "../classes/Project";
 import { projects } from "../data/projects";
 import { useState } from "react";
-import { codeText } from "../scripts/translate";
-import { NavBar } from "../scripts/NavBar";
+import { codeText } from "../functions/translate";
+import { NavBar } from "../components/NavBar";
 
 export const LanguagePage = () => {
     const [language, setLanguage] = useState("spanish");

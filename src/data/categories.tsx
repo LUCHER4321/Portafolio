@@ -1,4 +1,4 @@
-import { Category } from "../scripts/Category";
+import { Category } from "../classes/Category";
 
 export const categories = [
     ["wb00", "spanish:Desarrollo Web;english:Web Development"],
