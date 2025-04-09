@@ -12,7 +12,7 @@ export class PersonalLink {
         this.logo = logo;
     }
     
-    static Table({links, className, height, tdClassName, language}: tableProps) {
+    static Table({links, className, height, hoverHeight, tdClassName, language}: tableProps) {
         return (
             <CustomTable
                 data={links ?? []}
@@ -22,6 +22,7 @@ export class PersonalLink {
                         link={l.link}
                         image={l.logo}
                         height={height}
+                        hoverHeight={hoverHeight}
                     />
                 ]}
                 className={className}
@@ -34,6 +35,7 @@ export class PersonalLink {
 interface tableProps {
     links?: PersonalLink[];
     height?: number;
+    hoverHeight?: number;
     className?: string;
     tdClassName?: string;
     language: string;
