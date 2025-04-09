@@ -21,6 +21,7 @@ export const CategoryPage = () => {
                     projects={projects.filter(p => p.categories.includes(category))}
                     language={language}
                     height={50}
+                    hoverHeight={55}
                     lanSize={20}
                     className="border-collapse"
                     thClassName="border border-solid px-2"
