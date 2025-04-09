@@ -14,7 +14,7 @@ export class Category {
                 data={categories}
                 row={c => [
                     <a href={href?.(c)}>
-                        <button className="text-black dark:text-white my-1">
+                        <button className="text-black dark:text-white my-1 hover:py-[0.75em]! hover:px-[1.5em]!">
                             {c.name.get(language) ?? [...c.name.values()][0]}
                         </button>
                     </a>] as any[]}
