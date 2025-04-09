@@ -31,7 +31,7 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                         image="https://cdn-icons-png.flaticon.com/512/25/25694.png"
                         height={25}
                         hoverHeight={32}
-                        className="mr-2"
+                        className="mr-2 align-middle"
                         blank={false}
                     />
                     {links.filter(l => ["LinkedIn", "GitHub"].includes([...l.name.values()][0])).map((link, index) => (
@@ -41,7 +41,7 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                             image={link.logo}
                             height={25}
                             hoverHeight={32}
-                            className="mx-2"
+                            className="mx-2 align-middle"
                         />
                     ))}
                     <div className={"flex flex-col rounded" + ( projects ? " bg-[#7616AD]/75" : "")}>
