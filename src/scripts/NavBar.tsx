@@ -3,6 +3,7 @@ import { categories } from "../data/categories";
 import { codeText, getLanguageOptions } from "./translate";
 import { languages } from "../data/languages";
 import { links } from "../data/links";
+import { ImageLink } from "./ImageLink";
 
 interface NavBarProps {
     language: string;
@@ -25,13 +26,21 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
             {projects && <button className="flex opacity-0 fixed top-0 bottom-0 right-0 left-0" onClick={switchProjects}/>}
             <div className="flex fixed justify-between mb-4 w-full px-10 bg-[#6E17A2]/50 sm:bg-[#27273E]/50 top-0 right-0 h-15">
                 <div className="flex flex-row">
-                    <a href="/Portafolio/" className="h-full flex items-center justify-center mr-4">
-                        <img style={{height: 25}} src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"/>
-                    </a>
+                    <ImageLink
+                        link="/Portafolio/"
+                        image="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+                        height={25}
+                        className="mr-4"
+                        blank={false}
+                    />
                     {links.filter(l => ["LinkedIn", "GitHub"].includes([...l.name.values()][0])).map((link, index) => (
-                        <a href={link.link} key={index} className="mr-4 items-center h-full flex justify-center">
-                            <img src={link.logo} style={{height: 25}}/>
-                        </a>
+                        <ImageLink
+                            key={index}
+                            link={link.link}
+                            image={link.logo}
+                            height={25}
+                            className="mx-2"
+                        />
                     ))}
                     <div className={"flex flex-col" + ( projects ? " bg-[#7616AD]/75" : "")}>
                         <button className="bg-white/0! mt-1.5 text-start" onClick={switchProjects}>
