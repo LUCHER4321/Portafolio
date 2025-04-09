@@ -25,7 +25,7 @@ export class Project {
         this.languages = languages;
     }
 
-    static Table({projects, className, height, thClassName, tdClassName, languageFilter, lanSize, language}: tableProps) {
+    static Table({projects, className, height = 50, hoverHeight = 55, thClassName, tdClassName, languageFilter, lanSize = 20, hoverSize = 25, language}: tableProps) {
         const filteredProjects = languageFilter ? projects.filter(p => {
             for(const l of languageFilter){
                 if(p.languages.includes(l.name)) return true;
@@ -43,13 +43,24 @@ export class Project {
                         link={p.repository}
                         image={Project.GitHubLogo}
                         height={height}
+                        hoverHeight={hoverHeight}
                     />,
                     <Language.List
                         languages={languages.filter(l => p.languages.includes(l.name))}
                         className="flex flex-wrap"
+                        href={l => `/Portafolio/Language?lan=${l.name}`}
                         size={lanSize}
+                        hoverSize={hoverSize}
+                        buttonClassName="mx-0.5"
                     />
-                ] as any[]).concat(web ? [p.website && <ImageLink link={p.website} image={p.icon} height={height}/>] : [])}
+                ] as any[]).concat(web ? [p.website &&
+                    <ImageLink
+                        link={p.website}
+                        image={p.icon}
+                        height={height}
+                        hoverHeight={hoverHeight}
+                    />
+                ] : [])}
                 className={className}
                 thClassName={thClassName}
                 tdClassName={tdClassName}
@@ -61,10 +72,12 @@ export class Project {
 interface tableProps {
     projects: Project[];
     height?: number;
+    hoverHeight?: number;
     className?: string;
     thClassName?: string;
     tdClassName?: string;
     languageFilter?: Language[];
     lanSize?: number;
+    hoverSize?: number;
     language: string;
 }
