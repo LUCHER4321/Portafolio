@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { NavBar } from "../components/NavBar";
 import { categories } from "../data/categories";
-import { ProjectsPage } from "./Projects";
+import { ProjectsPage } from "../components/Projects";
 
 export const CategoryPage = () => {
     const [language, setLanguage] = useState("spanish");
