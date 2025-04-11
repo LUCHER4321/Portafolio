@@ -20,13 +20,13 @@ function App() {
       <div className="flex sm:flex-row flex-col sm:items-center sm:justify-around w-full">
         <h1 className="align-middle sm:w-1/5 w-full">Luciano Hernández</h1>
         <div className="flex flex-col text-justify my-4 w-full sm:w-3/5">
-          <h2 className="text-center text-2xl font-bold py-5 w-full">{codeText("stt04", language)}</h2>
+          <h2>{codeText("stt04", language)}</h2>
           <p>{codeText("prg00", language)}</p>
         </div>
       </div>
       <div className="flex flex-col sm:flex-row w-full sm:justify-around">
         <div className="flex flex-col">
-          <h2 className="text-center text-2xl font-bold py-5">{codeText("stt00", language)}</h2>
+          <h2>{codeText("stt00", language)}</h2>
           <PersonalLink.Table
             language={language}
             links={links}
@@ -36,19 +36,23 @@ function App() {
           />
         </div>
         <div className="flex flex-col">
-          <h2 className="text-center text-2xl font-bold py-5">{codeText("stt03", language)}</h2>
-          <Category.Table
+          <h2>{codeText("stt03", language)}</h2>
+          <Category.List
             categories={categories}
-            language={language}
             href={c => `/Portafolio/Category?cat=${c.id}`}
+            language={language}
+            className="flex flex-wrap justify-center"
+            buttonClassName="flex m-1 justify-center p-2.5"
+            size={45}
+            hoverSize={60}
           />
         </div>
         <div className="flex flex-col sm:w-2/7">
-          <h2 className="text-center w-full text-2xl font-bold py-5">{codeText("stt01", language)}</h2>
+          <h2>{codeText("stt01", language)}</h2>
           <Language.List
-            className="flex flex-wrap justify-center"
-            href={l => `/Portafolio/Language?lan=${l.name}`}
             languages={languages}
+            href={l => `/Portafolio/Language?lan=${l.name}`}
+            className="flex flex-wrap justify-center"
             buttonClassName="flex m-1 justify-center p-2.5"
             size={30}
             hoverSize={40}
