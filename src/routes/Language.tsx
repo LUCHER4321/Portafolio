@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavBar } from "../components/NavBar";
-import { ProjectsPage } from "./Projects";
+import { ProjectsPage } from "../components/Projects";
 
 export const LanguagePage = () => {
     const [language, setLanguage] = useState("spanish");
