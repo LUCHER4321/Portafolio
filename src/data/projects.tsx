@@ -3,14 +3,16 @@ import { Project } from "../classes/Project";
 export const projects = [
     new Project(
         "spanish:Portafolio;english:Portfolio",
+        "spanish:Portafolio;english:Portfolio",
         ["wb00"],
         "https://github.com/LUCHER4321/Portafolio",
-        "/Portaflio/",
+        "/Portafolio/",
         "/Portafolio/icon.png",
         "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"
     ),
     new Project(
         "spanish:Librería chrono-phylo-tree;english:chrono-phylo-tree Library",
+        "",
         ["wb00", "lb00"],
         "https://github.com/LUCHER4321/chrono-phylo-tree",
         "https://phylotree.netlify.app/",
@@ -19,6 +21,7 @@ export const projects = [
         "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"),
     new Project(
         "spanish:Predicción de Finanzas;english:Finance Prediction",
+        "",
         ["dt00"],
         "https://github.com/LUCHER4321/predict-finance",
         undefined,
@@ -27,6 +30,7 @@ export const projects = [
     ),
     new Project(
         "lan:Noble Corral",
+        "",
         ["dt00", "dt01"],
         "https://github.com/LUCHER4321/Noble-Corral",
         undefined,
@@ -35,6 +39,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Carrusel de Imágenes;english:Image Carousel",
+        "",
         ["wb00"],
         "https://github.com/LUCHER4321/Carrusel-Imagenes",
         "https://lucher4321.github.io/Carrusel-Imagenes/",
@@ -43,6 +48,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Valoraciones Steam;english:Steam Ratings",
+        "",
         ["dt00"],
         "https://github.com/LUCHER4321/Valoraciones-Steam",
         undefined, undefined,
@@ -50,6 +56,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Conversor de Unidades;english:Unit Converter",
+        "",
         ["wb00"],
         "https://github.com/LUCHER4321/Conversor-Unidades",
         "https://lucher4321.github.io/Conversor-Unidades",
@@ -58,6 +65,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Librería numeric-title;english:numeric-title library",
+        "",
         ["lb00"],
         "https://github.com/LUCHER4321/numeric-title",
         "https://www.npmjs.com/package/numeric-title",
@@ -66,6 +74,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Edificios Ecotect;english:Ecotect Buildings",
+        "",
         ["dt00"],
         "https://github.com/LUCHER4321/Edificios-Ecotect",
         undefined, undefined,
@@ -73,6 +82,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Reloj en Tiempo Real;english:Real Time Clock",
+        "",
         ["wb00"],
         "https://github.com/LUCHER4321/Reloj",
         "https://lucher4321.github.io/Reloj",
@@ -81,6 +91,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Pacientes ACV;english:CVA Patients",
+        "",
         ["dt00"],
         "https://github.com/LUCHER4321/Pacientes-ACV",
         undefined,
@@ -89,6 +100,7 @@ export const projects = [
     ),
     new Project(
         "lan:Power BI Netflix",
+        "",
         ["dt01"],
         "https://github.com/LUCHER4321/Power-BI-Netflix",
         "https://aka.ms/AAuyv0k",
@@ -97,6 +109,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Librería multiple-sorting-array;english:multiple-sorting-array Library",
+        "",
         ["lb00"],
         "https://github.com/LUCHER4321/multiple-sorting-array",
         "https://www.npmjs.com/package/multiple-sorting-array",
@@ -105,6 +118,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Problema de las N Reinas;english:N Queens Problem",
+        "",
         ["wb00"],
         "https://github.com/LUCHER4321/n-queens",
         "https://lucher4321.github.io/n-queens/",
@@ -113,6 +127,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Lista de Tareas;english:To Do List",
+        "",
         ["wb00"],
         "https://github.com/LUCHER4321/Lista-Tareas",
         "https://lucher4321.github.io/Lista-Tareas",
@@ -121,6 +136,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Accidentes Cerebrovasculares;english:Cerebrovascular Accidents",
+        "",
         ["dt00"],
         "https://github.com/LUCHER4321/ACV",
         undefined,
@@ -129,6 +145,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Calculadora de Propinas;english:Tip Calculator",
+        "",
         ["wb00"],
         "https://github.com/LUCHER4321/Calculadora-Propinas",
         "https://lucher4321.github.io/Calculadora-Propinas",
@@ -137,6 +154,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Librería change-base;english:change-base Library",
+        "",
         ["lb00"],
         "https://github.com/LUCHER4321/change-base",
         "https://www.npmjs.com/package/@lucher/change-base",
@@ -145,6 +163,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Informe Mundial sobre la Felicidad;english:World Happiness Report",
+        "",
         ["dt00"],
         "https://github.com/LUCHER4321/Informe-Felicidad",
         undefined,
@@ -153,6 +172,7 @@ export const projects = [
     ),
     new Project(
         "spanish:Postulación a RECEMED;english:Application to RECEMED",
+        "",
         ["wb00"],
         "https://github.com/LUCHER4321/RECEMED",
         undefined,
