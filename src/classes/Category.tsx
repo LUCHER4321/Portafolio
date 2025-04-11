@@ -1,32 +1,45 @@
-import { CustomTable } from "../components/CustomTable";
-
+import { ImageLink } from "../components/ImageLink";
 export class Category {
     id: string;
     name: Map<string, string>;
-    constructor(id: string, name: string) {
+    icon: string;
+
+    constructor(id: string, name: string, icon: string) {
         this.id = id;
-        this.name = new Map(name.split(";").map(s => [s.split(":")[0], s.split(":")[1]]));;
+        this.name = new Map(name.split(";").map(s => [s.split(":")[0], s.split(":")[1]]));
+        this.icon = icon;
     }
 
-    static Table({ categories, href, className, language }: tableProps) {
-        return (
-            <CustomTable
-                data={categories}
-                row={c => [
-                    <a href={href?.(c)}>
-                        <button className="text-black dark:text-white my-1 hover:py-[0.75em]! hover:px-[1.5em]!">
-                            {c.name.get(language) ?? [...c.name.values()][0]}
-                        </button>
-                    </a>] as any[]}
-                className={className}
-            />
+    static List({ categories, language, href, size, hoverSize, className, buttonClassName, imgClassName }: categoryListProps) {
+        const finalSize = (item: Category, hover: boolean = false) => hover ? (typeof hoverSize === "number" ? hoverSize : hoverSize?.(item)) : (typeof size === "number" ? size : size?.(item));
+        const Image = ({item}: {item: Category}) => <img style={{height: finalSize(item),}} src={item.icon} className={typeof imgClassName === 'string' ? imgClassName : imgClassName?.(item)} alt={item.name.get(language)}/>;
+        return(
+            <div className={className}>
+                {categories.map((item, index) =>
+                    href ?
+                    <ImageLink
+                        image={item.icon}
+                        alt={item.name.get(language) ?? [...item.name.values()][0]}
+                        link={href?.(item) ?? "/Portafolio"}
+                        height={finalSize(item)}
+                        hoverHeight={finalSize(item, true)}
+                        className={typeof buttonClassName === 'string' ? buttonClassName : buttonClassName?.(item)}
+                        blank={false}
+                    />:
+                    <Image item={item} key={index}/>
+                )}
+            </div>
         );
     }
 }
 
-interface tableProps {
+interface categoryListProps {
     categories: Category[];
     language: string;
-    className?: string;
     href?: (cat: Category) => string;
+    size?: number | ((cat: Category) => number);
+    hoverSize?: number | ((cat: Category) => number);
+    className?: string;
+    buttonClassName?: string | ((cat: Category) => string);
+    imgClassName?: string | ((cat: Category) => string);
 }
