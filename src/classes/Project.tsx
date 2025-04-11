@@ -45,7 +45,7 @@ export class Project {
                         hoverHeight={hoverSize}
                         className="sm:hidden"
                     />
-                    <h3>{project?.website ? codeText("hdr03", language) : ""}</h3>
+                    <h3 className={project?.website ? "" : "hidden sm:flex m-0!"}>{project?.website ? codeText("hdr03", language) : ""}</h3>
                     <ImageLink
                         link={project?.repository ?? ""}
                         image={Project.GitHubLogo}
@@ -58,6 +58,7 @@ export class Project {
                         image={project?.website ? project?.icon : ""}
                         height={lanSize}
                         hoverHeight={hoverSize}
+                        className={project?.website ? "" : "hidden sm:flex"}
                     />
                     <h3>{categories > 0 ? codeText("hdr04" + (categories > 1 ? "_p" : ""), language) : ""}</h3>
                     {categories > 0 && <Category.List
