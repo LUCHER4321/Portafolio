@@ -53,13 +53,12 @@ export class Project {
                         hoverHeight={hoverSize}
                         className="hidden sm:flex"
                     />
-                    {project?.website &&
                     <ImageLink
                         link={project?.website ?? ""}
-                        image={project?.icon}
+                        image={project?.website ? project?.icon : ""}
                         height={lanSize}
                         hoverHeight={hoverSize}
-                    />}
+                    />
                     <h3>{categories > 0 ? codeText("hdr04" + (categories > 1 ? "_p" : ""), language) : ""}</h3>
                     {categories > 0 && <Category.List
                         categories={project?.categories ?? []}
