@@ -62,7 +62,7 @@ ul {
 }
 
 body{
-  background-image: url("https://www.dewais.com/wp-content/themes/dewais/assets/src/img/services/background.svg");
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQmptgnlyqDVa_aX3usYrDWoF4caWy491f7XEKxZkIaJiOfOZj");
   background-size: cover;
 }
 
@@ -70,4 +70,23 @@ body{
   display: inline-flex;
   align-items: center !important;
   vertical-align: middle !important;
+}
+
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
 }
