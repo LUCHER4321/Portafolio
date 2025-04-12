@@ -11,7 +11,8 @@ btn01;Ocultar Todo;Hide All
 stt02;Proyectos;Projects
 hdr00;Proyecto;Project
 hdr01;Repositorio;Repository
-hdr02;Tecnologías utilizadas;Used technologies
+hdr02;Tecnología utilizada;Used technology
+hdr02_p;Tecnologías utilizadas;Used technologies
 hdr03;Sitio Web;Web Site
 hdr04;Categoría;Category
 hdr04_p;Categorías;Categories
