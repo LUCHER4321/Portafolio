@@ -1,4 +1,3 @@
-import { CustomTable } from "../components/CustomTable";
 import { ImageLink } from "../components/ImageLink";
 import { Language } from "./Language";
 import { languages } from "../data/languages";
@@ -70,7 +69,7 @@ export class Project {
                         hoverSize={hoverSize}
                         buttonClassName="mx-0.5"
                     />}
-                    <h3>{codeText("hdr02", language)}</h3>
+                    <h3>{codeText("hdr02" + ((project?.languages.length ?? 0) > 1 ? "_p" : ""), language)}</h3>
                     {categories > 0 && <Category.List
                         categories={project?.categories ?? []}
                         href={c => `/Portafolio/Category?cat=${c.id}`}
@@ -107,49 +106,6 @@ export class Project {
                 ))}
             </div>
         )
-    }
-
-    static Table({projects, className, height = 50, hoverHeight = 51, thClassName, tdClassName, languageFilter, lanSize = 20, hoverSize = 25, language}: tableProps) {
-        const filteredProjects = languageFilter ? projects?.filter(p => {
-            for(const l of languageFilter){
-                if(p.languages.includes(l)) return true;
-            }
-            return false;
-        }) : projects
-        const web = (filteredProjects?.filter(p => p.website).length ?? 0) > 0;
-        return(
-            <CustomTable
-                headers={["00", "01", "02"].concat(web ? ["03"] : []).map(n => codeText("hdr" + n, language) ?? "")}
-                data={filteredProjects ?? []}
-                row={p => ([
-                    p.name.get(language) ?? [...p.name.values()][0],
-                    <ImageLink
-                        link={p.repository}
-                        image={Project.GitHubLogo}
-                        height={height}
-                        hoverHeight={hoverHeight}
-                    />,
-                    <Language.List
-                        languages={languages.filter(l => p.languages.includes(l))}
-                        className="flex flex-wrap justify-center"
-                        href={l => `/Portafolio/Language?lan=${l.name}`}
-                        size={lanSize}
-                        hoverSize={hoverSize}
-                        buttonClassName="mx-0.5"
-                    />
-                ] as any[]).concat(web ? [p.website &&
-                    <ImageLink
-                        link={p.website}
-                        image={p.icon}
-                        height={height}
-                        hoverHeight={hoverHeight}
-                    />
-                ] : [])}
-                className={className}
-                thClassName={thClassName}
-                tdClassName={tdClassName}
-            />
-        );
     }
 }
 
