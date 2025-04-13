@@ -19,3 +19,10 @@ hdr04_p;Categorías;Categories
 ttl01;Proyectos hechos con {0};Projects made with {0}
 stt03;Tipos de Proyectos;Types of Projects
 ttl02;Proyectos de {0};{0} Projects
+stt05;Formulario de contacto;Contact form
+frm00;Nombre;Name
+frm01;Empresa;
+frm02;Correo electrónico;Email
+frm03;Teléfono;Phone
+frm04;Mensaje;Message
+frm05;Enviar;Send
