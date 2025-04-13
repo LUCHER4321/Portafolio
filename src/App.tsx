@@ -10,6 +10,7 @@ import { codeText } from './functions/translate';
 import { NavBar } from './components/NavBar';
 import { Category } from './classes/Category';
 import { categories } from './data/categories';
+import { ContactForm } from './components/ContactFrom';
 
 function App() {
   const [language, setLanguage] = useState("spanish");
@@ -59,7 +60,7 @@ function App() {
           />
         </div>
       </div>
-      <div className="h-8 sm:0"/>
+      <ContactForm language={language}/>
     </>
   )
 }
