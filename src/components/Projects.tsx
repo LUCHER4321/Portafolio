@@ -16,7 +16,6 @@ export const ProjectsPage = ({paramName, projectFilter, language, titleCode, tit
                     className="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full mt-8"
                 />
             </div>
-            <div className="h-8 sm:0"/>
         </>
     )
 };
