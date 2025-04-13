@@ -2,6 +2,7 @@ import { useState } from "react"
 import { NavBar } from "../components/NavBar";
 import { categories } from "../data/categories";
 import { ProjectsPage } from "../components/Projects";
+import { ContactForm } from "../components/ContactFrom";
 
 export const CategoryPage = () => {
     const [language, setLanguage] = useState("spanish");
@@ -15,6 +16,7 @@ export const CategoryPage = () => {
                 projectFilter={p => p.categories.map(c => c.id)}
                 language={language}
             />
+            <ContactForm language={language}/>
         </>
     )
 }
