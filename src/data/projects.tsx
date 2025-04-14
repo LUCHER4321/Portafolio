@@ -17,8 +17,17 @@ export const projects = [
         "https://github.com/LUCHER4321/chrono-phylo-tree",
         "https://phylotree.netlify.app/",
         "https://phylotree.netlify.app/logo.png",
-        "NPM",
-        "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"),
+        "NPM", "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"
+    ),
+    new Project(
+        "spanish:Noticias de la NASA;english:NASA News",
+        "",
+        ["wb00"],
+        "https://github.com/LUCHER4321/NASA-news",
+        "https://lucher4321.github.io/NASA-news/",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png",
+        "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"
+    ),
     new Project(
         "spanish:Predicción de Finanzas;english:Finance Prediction",
         "",
