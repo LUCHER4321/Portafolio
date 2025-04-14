@@ -7,7 +7,7 @@ export const ContactForm = ({language}: {language: string}) => {
     return (
         <div className="w-full flex flex-col items-center">
             <h2>{codeText("stt05", language)}</h2>
-            <form className="grid grid-cols-1 grid-flow-row sm:grid-rows-5 sm:grid-cols-7 sm:w-1/2 mt-4 gap-4" action="https://formsubmit.co/c5c08f2d10745c1c410bc5abab4dd957" method="POST">
+            <form className="grid grid-cols-1 grid-flow-row sm:grid-rows-5 sm:grid-cols-7 sm:w-11/24 mt-4 gap-4" action="https://formsubmit.co/c5c08f2d10745c1c410bc5abab4dd957" method="POST">
                 <input type="text" className={inputClass} placeholder={codeText("frm00", language) + "*"} name="name" required/>
                 <input type="text" className={inputClass} placeholder={codeText("frm01", language)} name="company"/>
                 <input type="email" className={inputClass} placeholder={codeText("frm02", language) + "*"} name="email" required/>
