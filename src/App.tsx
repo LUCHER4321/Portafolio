@@ -18,9 +18,9 @@ function App() {
   return (
     <>
       <NavBar language={language} setLanguage={setLanguage}/>
-      <div className="flex lg:flex-row flex-col lg:items-center lg:justify-around w-full">
-        <h1 className="align-middle lg:w-1/5 w-full">Luciano Hernández</h1>
-        <div className="flex flex-col text-justify my-4 w-full lg:w-3/5">
+      <div className="flex md:flex-row flex-col md:items-center md:justify-around w-full">
+        <h1 className="align-middle md:w-1/5 w-full">Luciano Hernández</h1>
+        <div className="flex flex-col text-justify my-4 w-full md:w-3/5">
           <h2>{codeText("stt04", language)}</h2>
           <p>{codeText("prg00", language)}</p>
         </div>
