@@ -20,5 +20,9 @@ export const categories = [
         "dt01",
         "spanish:Visualización de Datos;english:Data Visualization",
         "https://cdn-icons-png.flaticon.com/512/6332/6332308.png",
+    ],[
+        "ap00",
+        "spanish:Desarrollo de Aplicaciones;english:Apps Development",
+        "https://cdn-icons-png.flaticon.com/512/5738/5738031.png",
     ],
 ].map(l => new Category(l[0], l[1], l[2]));
