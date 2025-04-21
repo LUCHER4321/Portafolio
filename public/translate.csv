@@ -14,6 +14,7 @@ hdr01;Repositorio;Repository
 hdr02;Tecnología utilizada;Used technology
 hdr02_p;Tecnologías utilizadas;Used technologies
 hdr03;Sitio Web;Web Site
+hdr03_d;Descargar;Download
 hdr04;Categoría;Category
 hdr04_p;Categorías;Categories
 ttl01;Proyectos hechos con {0};Projects made with {0}
