@@ -38,6 +38,24 @@ export const projects = [
         "HTML", "R"
     ),
     new Project(
+        "spanish:Aplicación de Lista de Tareas;english:ToDo List App",
+        "",
+        ["ap00"],
+        "https://github.com/LUCHER4321/ToDo-List",
+        "/Portafolio/APKs/ToDo List.apk",
+        "https://cdn-icons-png.flaticon.com/512/174/174836.png",
+        "Kotlin", "Android Studio"
+    ),
+    new Project(
+        "spanish:Aplicación Calculadora de Propinas;english:Tip Calculator App",
+        "",
+        ["ap00"],
+        "https://github.com/LUCHER4321/Tip-Calculator",
+        "/Portafolio/APKs/Tip Calculator.apk",
+        "https://cdn-icons-png.flaticon.com/512/174/174836.png",
+        "Kotlin", "Android Studio"
+    ),
+    new Project(
         "lan:Noble Corral",
         "",
         ["dt00", "dt01"],
