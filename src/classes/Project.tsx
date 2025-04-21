@@ -15,6 +15,7 @@ export class Project {
     languages: Language[] = [];
 
     private static GitHubLogo = "https://logo.clearbit.com/github.com";
+    private static APKsFolder = "/Portafolio/APKs/";
 
     constructor(name: string, description: string, categoryIDs: string[], repository: string, website: string | undefined = undefined, icon: string | undefined = undefined, ...languageNames: string[]) {
         this.name = new Map(name.split(";").map(s => [s.split(":")[0], s.split(":")[1]]));
@@ -24,6 +25,10 @@ export class Project {
         this.website = website;
         this.icon = icon;
         this.languages = languages.filter(l => languageNames.includes(l.name));
+    }
+
+    isAPK() {
+        return this.website?.includes(Project.APKsFolder) ?? false;
     }
 
     private static Display({project, language, lanSize, hoverSize}: tableProps) {
@@ -44,7 +49,7 @@ export class Project {
                         hoverHeight={hoverSize}
                         className="sm:hidden"
                     />
-                    <h3 className={project?.website ? "" : "hidden sm:flex m-0!"}>{project?.website ? codeText("hdr03", language) : ""}</h3>
+                    <h3 className={project?.website ? "" : "hidden sm:flex m-0!"}>{project?.website ? codeText("hdr03" + (project.isAPK() ? "_d" : ""), language) : ""}</h3>
                     <ImageLink
                         link={project?.repository ?? ""}
                         image={Project.GitHubLogo}
