@@ -26,7 +26,7 @@ export const projects = [
         "https://github.com/LUCHER4321/NASA-news",
         "https://lucher4321.github.io/NASA-news/",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png",
-        "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML"
+        "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML", "REST API"
     ),
     new Project(
         "spanish:Predicción de Finanzas;english:Finance Prediction",
@@ -36,6 +36,15 @@ export const projects = [
         undefined,
         undefined,
         "HTML", "R"
+    ),
+    new Project(
+        "spanish:Aplicación de Noticias de la NASA;english:NASA News App",
+        "",
+        ["ap00"],
+        "https://github.com/LUCHER4321/NASA-News-App",
+        "/Portafolio/APKs/NASA News App.apk",
+        "https://cdn-icons-png.flaticon.com/512/174/174836.png",
+        "Kotlin", "Android Studio", "REST API"
     ),
     new Project(
         "spanish:Aplicación de Lista de Tareas;english:ToDo List App",
