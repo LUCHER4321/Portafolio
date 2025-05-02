@@ -42,8 +42,8 @@ export const projects = [
         "",
         ["bk00"],
         "https://github.com/LUCHER4321/rest-api-deploy",
-        "https://rest-api-deploy-xi.vercel.app/",
-        "https://www.svgrepo.com/show/327408/logo-vercel.svg",
+        "https://rest-api-deploy-xf6e.onrender.com/",
+        undefined,
         "JavaScript", "HTML", "Node.js", "REST API"
     ),
     new Project(
