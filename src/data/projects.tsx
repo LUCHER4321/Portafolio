@@ -29,15 +29,6 @@ export const projects = [
         "TypeScript", "Tailwind CSS", "Vite", "React", "CSS", "HTML", "REST API"
     ),
     new Project(
-        "spanish:Predicción de Finanzas;english:Finance Prediction",
-        "",
-        ["dt00"],
-        "https://github.com/LUCHER4321/predict-finance",
-        undefined,
-        undefined,
-        "HTML", "R"
-    ),
-    new Project(
         "spanish:Aplicación de Noticias de la NASA;english:NASA News App",
         "",
         ["ap00"],
@@ -45,6 +36,24 @@ export const projects = [
         "/Portafolio/APKs/NASA News App.apk",
         "https://cdn-icons-png.flaticon.com/512/174/174836.png",
         "Kotlin", "Android Studio", "REST API"
+    ),
+    new Project(
+        "spanish:API de Películas;english:Movies API",
+        "",
+        ["bk00"],
+        "https://github.com/LUCHER4321/rest-api-deploy",
+        "https://rest-api-deploy-xi.vercel.app/",
+        "https://www.svgrepo.com/show/327408/logo-vercel.svg",
+        "JavaScript", "HTML", "Node.js", "REST API"
+    ),
+    new Project(
+        "spanish:Predicción de Finanzas;english:Finance Prediction",
+        "",
+        ["dt00"],
+        "https://github.com/LUCHER4321/predict-finance",
+        undefined,
+        undefined,
+        "HTML", "R", "REST API"
     ),
     new Project(
         "spanish:Aplicación de Lista de Tareas;english:ToDo List App",
