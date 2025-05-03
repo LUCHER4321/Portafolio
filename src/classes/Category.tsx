@@ -25,6 +25,7 @@ export class Category {
                         hoverHeight={finalSize(item, true)}
                         className={typeof buttonClassName === 'string' ? buttonClassName : buttonClassName?.(item)}
                         blank={false}
+                        key={index}
                     />:
                     <Image item={item} key={index}/>
                 )}
