@@ -38,6 +38,15 @@ export const projects = [
         "Kotlin", "Android Studio", "REST API"
     ),
     new Project(
+        "spanish:Chat en Tiempo Real;english:Real Time Chat",
+        "",
+        ["wb00", "bk00"],
+        "https://github.com/LUCHER4321/real-time-chat",
+        "https://lucher4321.github.io/real-time-chat/",
+        undefined,
+        "JavaScript", "HTML", "CSS", "Node.js", "Socket.io", "REST API"
+    ),
+    new Project(
         "spanish:API de Películas;english:Movies API",
         "",
         ["bk00"],
