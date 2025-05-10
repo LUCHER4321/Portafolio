@@ -38,14 +38,13 @@ function App() {
         </div>
         <div className="flex flex-col">
           <h2>{codeText("stt03", language)}</h2>
-          <Category.List
+          <Category.Table
             categories={categories}
             href={c => `/Portafolio/Category?cat=${c.id}`}
             language={language}
-            className="flex flex-wrap justify-center"
-            buttonClassName="flex m-1 justify-center p-2.5"
-            size={45}
-            hoverSize={60}
+            imgClassName="flex justify-center p-2.5"
+            size={30}
+            hoverSize={35}
           />
         </div>
         <div className="flex flex-col sm:w-2/7">

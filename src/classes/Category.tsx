@@ -1,3 +1,4 @@
+import { CustomTable } from "../components/CustomTable";
 import { ImageLink } from "../components/ImageLink";
 export class Category {
     id: string;
@@ -32,6 +33,26 @@ export class Category {
             </div>
         );
     }
+
+    static Table({ categories, tdClassName, language, href, size, hoverSize, className, imgClassName }: categoryListProps) {
+        return (
+            <CustomTable
+                data={categories}
+                row={c => [
+                    <ImageLink
+                        link={href?.(c) ?? "/Portafolio"}
+                        image={c.icon}
+                        height={typeof size === "number" ? size : size?.(c)}
+                        hoverHeight={typeof hoverSize === "number" ? hoverSize : hoverSize?.(c)}
+                        className={typeof imgClassName === "string" ? imgClassName : imgClassName?.(c)}
+                    />,
+                    c.name.get(language),
+                ]}
+                className={className}
+                tdClassName={tdClassName}
+            />
+        );
+    }
 }
 
 interface categoryListProps {
@@ -41,6 +62,7 @@ interface categoryListProps {
     size?: number | ((cat: Category) => number);
     hoverSize?: number | ((cat: Category) => number);
     className?: string;
+    tdClassName?: string;
     buttonClassName?: string | ((cat: Category) => string);
     imgClassName?: string | ((cat: Category) => string);
 }
