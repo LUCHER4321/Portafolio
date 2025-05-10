@@ -1,19 +1,42 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 import './App.css'
 import { PersonalLink } from './classes/PersonalLink';
 import { links } from './data/links';
 import { Language } from './classes/Language';
-import { languages } from './data/languages';
 import { codeText } from './functions/translate';
 import { NavBar } from './components/NavBar';
 import { Category } from './classes/Category';
-import { categories } from './data/categories';
 import { ContactForm } from './components/ContactFrom';
+import { getLanguages } from './api/languages';
+import { getUser } from './api/user';
+import { getCategories } from './api/categories';
 
 function App() {
   const [language, setLanguage] = useState("spanish");
+  const [remoteLan, setRemoteLan] = useState<Language[]>([]);
+  const [remoteCat, setRemoteCat] = useState<Category[]>([]);
+  useEffect(() => {
+    getUser().then(
+      u => {
+        getLanguages({ user: u.id }).then(
+          L => setRemoteLan(
+            L.map(
+              l => new Language(l)
+            )
+          )
+        );
+        getCategories({ user: u.id }).then(
+          C => setRemoteCat(
+            C.map(
+              c => new Category(c)
+            )
+          )
+        );
+      }
+    );
+  }, []);
 
   return (
     <>
@@ -39,7 +62,7 @@ function App() {
         <div className="flex flex-col">
           <h2>{codeText("stt03", language)}</h2>
           <Category.Table
-            categories={categories}
+            categories={remoteCat}
             href={c => `/Portafolio/Category?cat=${c.id}`}
             language={language}
             imgClassName="flex justify-center p-2.5"
@@ -50,8 +73,8 @@ function App() {
         <div className="flex flex-col sm:w-2/7">
           <h2>{codeText("stt01", language)}</h2>
           <Language.List
-            languages={languages}
-            href={l => `/Portafolio/Language?lan=${l.name}`}
+            languages={remoteLan}
+            href={l => `/Portafolio/Language?lan=${l.id}`}
             className="flex flex-wrap justify-center"
             buttonClassName="flex m-1 justify-center p-2.5"
             size={30}

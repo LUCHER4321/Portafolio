@@ -1,12 +1,15 @@
 import { ImageLink } from "../components/ImageLink";
+import { LanguageDTO } from "../types";
 
 export class Language {
+    id: number;
     name: string;
     image: string;
 
-    constructor(name: string, image: string) {
-        this.name = name;
-        this.image = image;
+    constructor(dto: LanguageDTO) {
+        this.id = dto.id
+        this.name = dto.name;
+        this.image = dto.image;
     }
 
     static List({languages, href, size, hoverSize, className, buttonClassName, imgClassName}: languageListProps) {

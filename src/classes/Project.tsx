@@ -1,13 +1,11 @@
 import { ImageLink } from "../components/ImageLink";
 import { Language } from "./Language";
-import { languages } from "../data/languages";
 import { codeText } from "../functions/translate";
 import { Category } from "./Category";
-import { categories } from "../data/categories";
+import { ProjectDTO } from "../types";
 
 export class Project {
     name: Map<string,string>;
-    description: Map<string,string>;
     categories: Category[];
     repository: string;
     website?: string;
@@ -17,14 +15,13 @@ export class Project {
     private static GitHubLogo = "https://logo.clearbit.com/github.com";
     private static APKsFolder = "/Portafolio/APKs/";
 
-    constructor(name: string, description: string, categoryIDs: string[], repository: string, website: string | undefined = undefined, icon: string | undefined = undefined, ...languageNames: string[]) {
-        this.name = new Map(name.split(";").map(s => [s.split(":")[0], s.split(":")[1]]));
-        this.description = new Map(description.split(";").map(s => [s.split(":")[0], s.split(":")[1]]));
-        this.categories = categories.filter(c => categoryIDs.includes(c.id));
-        this.repository = repository;
-        this.website = website;
-        this.icon = icon;
-        this.languages = languages.filter(l => languageNames.includes(l.name));
+    constructor(dto: ProjectDTO) {
+        this.name = new Map(dto.name.map(n => [n.translation, n.name]));
+        this.categories = dto.categories.map(c => new Category(c));
+        this.repository = dto.repository;
+        this.website = dto.website;
+        this.icon = dto.icon;
+        this.languages = dto.languages.map(l => new Language(l));
     }
 
     isAPK() {
@@ -85,7 +82,7 @@ export class Project {
                         buttonClassName="mx-0.5"
                     />}
                     <Language.List
-                        languages={languages.filter(l => project?.languages.includes(l))}
+                        languages={project?.languages ?? []}
                         href={l => `/Portafolio/Language?lan=${l.name}`}
                         className="flex flex-wrap justify-center"
                         size={lanSize}

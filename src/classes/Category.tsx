@@ -1,14 +1,15 @@
 import { CustomTable } from "../components/CustomTable";
 import { ImageLink } from "../components/ImageLink";
+import { CategoryDTO } from "../types";
 export class Category {
     id: string;
     name: Map<string, string>;
     icon: string;
 
-    constructor(id: string, name: string, icon: string) {
-        this.id = id;
-        this.name = new Map(name.split(";").map(s => [s.split(":")[0], s.split(":")[1]]));
-        this.icon = icon;
+    constructor(dto: CategoryDTO) {
+        this.id = dto.id;
+        this.name = new Map(dto.name.map(n => [n.translation, n.name]));
+        this.icon = dto.icon;
     }
 
     static List({ categories, language, href, size, hoverSize, className, buttonClassName, imgClassName }: categoryListProps) {
@@ -45,6 +46,7 @@ export class Category {
                         height={typeof size === "number" ? size : size?.(c)}
                         hoverHeight={typeof hoverSize === "number" ? hoverSize : hoverSize?.(c)}
                         className={typeof imgClassName === "string" ? imgClassName : imgClassName?.(c)}
+                        blank={false}
                     />,
                     c.name.get(language),
                 ]}

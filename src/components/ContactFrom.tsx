@@ -1,6 +1,5 @@
+import { EMAIL_CODE } from "../config";
 import { codeText } from "../functions/translate";
-
-const EMAIL_CODE = import.meta.env.VITE_EMAIL_CODE;
 
 export const ContactForm = ({language}: {language: string}) => {
     const baseClass = "text-black bg-white! rounded p-2";

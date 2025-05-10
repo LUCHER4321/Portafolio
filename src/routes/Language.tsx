@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavBar } from "../components/NavBar";
 import { ProjectsPage } from "../components/Projects";
 import { ContactForm } from "../components/ContactFrom";
+import { getLanguage } from "../api/languages";
 
 export const LanguagePage = () => {
     const [language, setLanguage] = useState("spanish");
@@ -11,7 +12,7 @@ export const LanguagePage = () => {
             <ProjectsPage
                 paramName="lan"
                 titleCode="ttl01"
-                projectFilter={p => p.languages.map(l => l.name)}
+                titleParam={async (lan) => (await getLanguage(+lan)).name}
                 language={language}
             />
             <ContactForm language={language}/>
