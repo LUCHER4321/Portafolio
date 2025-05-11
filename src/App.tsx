@@ -65,7 +65,7 @@ function App() {
           <h2>{codeText("stt03", language)}</h2>
           <Category.Table
             categories={remoteCat}
-            href={c => `/Portafolio/Category?cat=${c.id}`}
+            href={c => `/Portafolio/Category/${c.id}`}
             language={language}
             imgClassName="flex justify-center p-2.5"
             size={30}
@@ -76,7 +76,7 @@ function App() {
           <h2>{codeText("stt01", language)}</h2>
           <Language.List
             languages={remoteLan}
-            href={l => `/Portafolio/Language?lan=${l.id}`}
+            href={l => `/Portafolio/Language/${l.name}`}
             className="flex flex-wrap justify-center"
             buttonClassName="flex m-1 justify-center p-2.5"
             size={30}

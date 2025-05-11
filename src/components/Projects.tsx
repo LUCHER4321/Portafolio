@@ -1,21 +1,19 @@
-import { useSearchParams } from "react-router-dom";
 import { Project } from "../classes/Project";
 import { codeText } from "../functions/translate";
 import { useEffect, useState } from "react";
 import { getUser } from "../api/user";
 import { getProjects } from "../api/projects";
+import { useParams } from "react-router-dom";
 
-export const ProjectsPage = ({paramName, language, titleCode, titleParam}: projectsPageProps) => {
-    const [searchParams] = useSearchParams();
-    const par = searchParams.get(paramName) || "";
-    const [title, setTitle] = useState(par);
-    const [remoteProy, setRemoteProy] = useState<Project[]>([])
+export const ProjectsPage = ({language, titleCode, titleParam}: projectsPageProps) => {
+    const [remoteProy, setRemoteProy] = useState<Project[]>([]);
+    const params = useParams();
+    const { lan, cat } = params
     useEffect(() => {
-        titleParam?.(par).then(setTitle);
         getUser().then(u => getProjects({
             user: u.id,
-            lan: par === "lan" ? par : undefined,
-            cat: par === "cat" ? par : undefined,
+            lan,
+            cat
         }).then(
             P => setRemoteProy(
                 P.map(
@@ -27,7 +25,7 @@ export const ProjectsPage = ({paramName, language, titleCode, titleParam}: proje
     return (
         <>
             <div className="flex flex-col justify-center mt-8">
-                <h1>{codeText(titleCode, language, [title])}</h1>
+                <h1>{codeText(titleCode, language, [titleParam])}</h1>
                 <Project.List
                     language={language}
                     projects={remoteProy}
@@ -39,8 +37,7 @@ export const ProjectsPage = ({paramName, language, titleCode, titleParam}: proje
 };
 
 interface projectsPageProps {
-    paramName: string;
-    titleCode: string;
-    titleParam?: (param: string) => Promise<string>;
     language: string;
+    titleCode: string;
+    titleParam: string;
 }

@@ -64,7 +64,7 @@ export class Project {
                     <h3>{categories > 0 ? codeText("hdr04" + (categories > 1 ? "_p" : ""), language) : ""}</h3>
                     {categories > 0 && <Category.List
                         categories={project?.categories ?? []}
-                        href={c => `/Portafolio/Category?cat=${c.id}`}
+                        href={c => `/Portafolio/Category/${c.id}`}
                         language={language}
                         className="flex flex-wrap justify-center sm:hidden"
                         size={lanSize}
@@ -74,7 +74,7 @@ export class Project {
                     <h3>{codeText("hdr02" + ((project?.languages.length ?? 0) > 1 ? "_p" : ""), language)}</h3>
                     {categories > 0 && <Category.List
                         categories={project?.categories ?? []}
-                        href={c => `/Portafolio/Category?cat=${c.id}`}
+                        href={c => `/Portafolio/Category/${c.id}`}
                         language={language}
                         className="flex flex-wrap justify-center hidden sm:flex"
                         size={lanSize}
@@ -83,7 +83,7 @@ export class Project {
                     />}
                     <Language.List
                         languages={project?.languages ?? []}
-                        href={l => `/Portafolio/Language?lan=${l.name}`}
+                        href={l => `/Portafolio/Language/${l.name}`}
                         className="flex flex-wrap justify-center"
                         size={lanSize}
                         hoverSize={hoverSize}
