@@ -1,9 +1,12 @@
-import { useState } from "react";
-import { categories } from "../data/categories";
+import { useEffect, useState } from "react";
 import { codeText, getLanguageOptions } from "../functions/translate";
-import { languages } from "../data/languages";
 import { links } from "../data/links";
 import { ImageLink } from "./ImageLink";
+import { Language } from "../classes/Language";
+import { Category } from "../classes/Category";
+import { getUser } from "../api/user";
+import { getLanguages } from "../api/languages";
+import { getCategories } from "../api/categories";
 
 interface NavBarProps {
     language: string;
@@ -14,6 +17,28 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
     const [projects, setProjects] = useState(false);
     const [categoriesVisible, setCategoriesVisible] = useState(false);
     const [languagesVisible, setLanguagesVisible] = useState(false);
+      const [remoteLan, setRemoteLan] = useState<Language[]>([]);
+      const [remoteCat, setRemoteCat] = useState<Category[]>([]);
+      useEffect(() => {
+        getUser().then(
+          u => {
+            getLanguages({ user: u.id }).then(
+              L => setRemoteLan(
+                L.map(
+                  l => new Language(l)
+                )
+              )
+            );
+            getCategories({ user: u.id }).then(
+              C => setRemoteCat(
+                C.map(
+                  c => new Category(c)
+                )
+              )
+            );
+          }
+        );
+      }, []);
     const trLanguages = getLanguageOptions();
 
     const switchProjects = () => {
@@ -61,8 +86,8 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                                     </button>
                                 </td>
                                 <td className={`${categoriesVisible ? "block" : "hidden"} flex flex-col`}>
-                                    {categories.map((category, index) => (
-                                        <a href={`/Portafolio/Category?cat=${category.id}`} key={index} className="text-black! dark:text-white! py-2.5">
+                                    {remoteCat.map((category, index) => (
+                                        <a href={`/Portafolio/Category/${category.id}`} key={index} className="text-black! dark:text-white! py-2.5">
                                             {category.name.get(language)}
                                         </a>
                                     ))}
@@ -76,8 +101,8 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                                     </button>
                                 </td>
                                 <td className={`${languagesVisible ? "block" : "hidden"} flex flex-col`}>
-                                    {languages.map((language, index) => (
-                                        <a href={`/Portafolio/Language?lan=${language.name}`} key={index} className="text-black! dark:text-white! py-1.5">
+                                    {remoteLan.map((language, index) => (
+                                        <a href={`/Portafolio/Language/${language.name}`} key={index} className="text-black! dark:text-white! py-1.5">
                                             {language.name}
                                         </a>
                                     ))}

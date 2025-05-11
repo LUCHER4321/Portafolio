@@ -11,8 +11,8 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/Portafolio" element={<App/>}/>
-        <Route path="/Portafolio/Language" element={<LanguagePage/>}/>
-        <Route path="/Portafolio/Category" element={<CategoryPage/>}/>
+        <Route path="/Portafolio/Language/:lan" element={<LanguagePage/>}/>
+        <Route path="/Portafolio/Category/:cat" element={<CategoryPage/>}/>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

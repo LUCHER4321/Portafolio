@@ -1,19 +1,30 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { NavBar } from "../components/NavBar";
-import { categories } from "../data/categories";
 import { ProjectsPage } from "../components/Projects";
 import { ContactForm } from "../components/ContactFrom";
+import { getCategory } from "../api/categories";
+import { useParams } from "react-router-dom";
 
 export const CategoryPage = () => {
     const [language, setLanguage] = useState("spanish");
+    const [titleParam, setTitleParam] = useState("");
+    const { cat } = useParams();
+    useEffect(() => {
+        if(!cat) return;
+        getCategory(cat).then(
+            c => setTitleParam(
+                c.name.find(
+                    n => n.translation === language
+                )?.name ?? ""
+            )
+        );
+    }, []);
     return (
         <>
             <NavBar language={language} setLanguage={setLanguage}/>
             <ProjectsPage
-                paramName="cat"
                 titleCode="ttl02"
-                titleParam={cat => categories.find(c => c.id === cat)?.name.get(language) ?? ""}
-                projectFilter={p => p.categories.map(c => c.id)}
+                titleParam={titleParam}
                 language={language}
             />
             <ContactForm language={language}/>
