@@ -38,7 +38,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npm run build
+        run: |
+          npm run build --\
+          --mode production \
+          --define VITE_BACKEND_URL='https://architectural-carolina-lucher4321-57ee9fb4.koyeb.app/' \
+          --define VITE_BACKEND_TOKEN='${{ secrets.VITE_BACKEND_TOKEN }}' \
+          --define VITE_EMAIL_CODE='${{ secrets.VITE_EMAIL_CODE }}'
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
