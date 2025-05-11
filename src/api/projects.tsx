@@ -1,5 +1,5 @@
 import { BACKEND_URL } from "../config";
-import { ProjectDTO } from "../types";
+import { Delete, ProjectDTO } from "../types";
 
 interface Filter {
     user: string;
@@ -30,5 +30,66 @@ export const getProject = async (user: string, id: number): Promise<ProjectDTO> 
             languages: [],
             categories: [],
         };
+    }
+};
+
+interface Post extends Omit<Omit<Omit<ProjectDTO, "id">, "languages">, "categories"> {
+    token: string;
+    languages: string[];
+    categories: string[];
+};
+
+export const postProject = async (user: string, body: Post): Promise<ProjectDTO> => {
+    try {
+        const result = await fetch(BACKEND_URL + `api/portfolio/projects/${user}`, {
+            method: "POST",
+            body: JSON.stringify(body),
+        });
+        const json = await result.json();
+        return json;
+    } catch {
+        return {
+            id: 0,
+            name: [],
+            repository: "",
+            languages: [],
+            categories: [],
+        };
+    }
+};
+
+interface Patch extends Partial<Omit<Post, "token">> {
+    token: string;
+}
+
+export const patchProject = async (user: string, id: number, body: Patch): Promise<ProjectDTO> => {
+    try {
+        const result = await fetch(BACKEND_URL + `api/portfolio/projects/${user}/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify(body),
+        });
+        const json = await result.json();
+        return json;
+    } catch {
+        return {
+            id: 0,
+            name: [],
+            repository: "",
+            languages: [],
+            categories: [],
+        };
+    }
+};
+
+export const deleteProject = async (user: string, id: string, token: string): Promise<Delete> => {
+    try {
+        const result = await fetch(BACKEND_URL + `api/portfolio/projects/${user}/${id}`, {
+            method: "DELETE",
+            body: JSON.stringify({ token }),
+        });
+        const json = await result.json();
+        return json;
+    } catch(e: any) {
+        return { message: e.message };
     }
 };

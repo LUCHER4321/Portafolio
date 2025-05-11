@@ -29,3 +29,7 @@ export interface UserDTO {
     id: string;
     name: string;
 }
+
+export interface Delete {
+    message: string;
+}
