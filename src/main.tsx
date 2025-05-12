@@ -2,18 +2,24 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { LanguagePage } from './routes/Language.tsx'
 import { CategoryPage } from './routes/Category.tsx'
+import { LanguageUpdate } from './routes/Update/Language.tsx'
+import { CategoryUpdate } from './routes/Update/Category.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/Portafolio" element={<App/>}/>
-        <Route path="/Portafolio/Language/:lan" element={<LanguagePage/>}/>
-        <Route path="/Portafolio/Category/:cat" element={<CategoryPage/>}/>
-      </Routes>
+      <Route path="/Portafolio">
+        <Route path="/" element={<App/>}/>
+        <Route path="/Language/:lan" element={<LanguagePage/>}/>
+        <Route path="/Category/:cat" element={<CategoryPage/>}/>
+        <Route path="/Update">
+          <Route path="/Language" element={<LanguageUpdate/>}/>
+          <Route path="/Category" element={<CategoryUpdate/>}/>
+        </Route>
+      </Route>
     </BrowserRouter>
   </StrictMode>,
 )

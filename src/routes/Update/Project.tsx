@@ -1,0 +1,186 @@
+import { useEffect, useState } from "react";
+import { Method } from "../../enum";
+import { CategoryDTO, Field, LanguageDTO, ProjectDTO } from "../../types";
+import { Update } from "../../components/Update";
+import { getUser } from "../../api/user";
+import { deleteProject, getProjects, patchProject, postProject } from "../../api/projects";
+import { getLanguages } from "../../api/languages";
+import { getCategories } from "../../api/categories";
+
+export const ProjectUpdate = ({}) => {
+    const [user, setUser] = useState("");
+    const [token, setToken] = useState("");
+    const [method, setMethod] = useState(Method.POST);
+    const [options, setOptions] = useState<ProjectDTO[]>([]);
+    const [selected, setSelected] = useState<ProjectDTO>();
+    const [nameSp, setSpanish] = useState("");
+    const [nameEn, setEnglish] = useState("");
+    const [repository, setRepository] = useState("");
+    const [website, setWebsite] = useState("");
+    const [icon, setIcon] = useState("");
+    const [languages, setLanguages] = useState<LanguageDTO[]>([]);
+    const [languagesOpt, setLanguagesOpt] = useState<LanguageDTO[]>([]);
+    const [categories, setCategories] = useState<CategoryDTO[]>([]);
+    const [categoriesOpt, setCategoriesOpt] = useState<CategoryDTO[]>([]);
+    const [response, setResponse] = useState<any>({});
+    const nameField: Field<unknown> = {
+        name: "name",
+        type: "name",
+        setSpanish,
+        setEnglish,
+    };
+    const repoField: Field<unknown> = {
+        name: "repository",
+        type: "string",
+        setString: setRepository,
+    };
+    const webField: Field<unknown> = {
+        name: "website",
+        optional: true,
+        type: "string",
+        setString: setWebsite,
+    };
+    const iconField: Field<unknown> = {
+        name: "icon",
+        optional: true,
+        type: "string",
+        setString: setIcon,
+    };
+    const lanField: Field<LanguageDTO> = {
+        name: "languages",
+        type: "list",
+        setItem: (l, b) => {
+            let lan = [...languages];
+            if(!lan.includes(l) && b) lan.push(l);
+            else if (lan.includes(l) && !b) lan = lan.filter(l1 => l1 !== l);
+            setLanguages(lan);
+        },
+        items: () => languagesOpt,
+        iconFunc: l => l.image,
+        nameFunc: l => l.name,
+    };
+    const catField: Field<CategoryDTO> = {
+        name: "categories",
+        type: "list",
+        setItem: (c, b) => {
+            let cat = [...categories];
+            if(!cat.includes(c) && b) cat.push(c);
+            else if (cat.includes(c) && !b) cat = cat.filter(c1 => c1 !== c);
+            setCategories(cat);
+        },
+        items: () => categoriesOpt,
+        iconFunc: c => c.icon,
+        nameFunc: c => c.name.map(c1 => c1.name).join("; "),
+    };
+    const [optionals, setOptionals] = useState(new Map<Field<any>, boolean>([
+        [nameField, false],
+        [repoField, false],
+        [webField, false],
+        [iconField, false],
+        [lanField, false],
+        [catField, false],
+    ]));
+
+    useEffect(() => {
+        getUser().then(
+            u => {
+                setUser(u.id);
+                getProjects({user: u.id}).then(P => setOptions(P));
+            }
+        );
+        getLanguages().then(L => setLanguagesOpt(L));
+        getCategories().then(C => setCategoriesOpt(C));
+    }, []);
+    return (
+        <Update
+            title="project"
+            token={token}
+            setToken={setToken}
+            method={method}
+            setMethod={setMethod}
+            options={options}
+            selected={selected}
+            setSelected={setSelected}
+            fields={[
+                nameField,
+                repoField,
+                webField,
+                iconField,
+                lanField,
+                catField
+            ]}
+            response={response}
+            optionals={optionals}
+            setOptional={(f, b) => {
+                const opt = new Map(optionals);
+                opt.set(f, b);
+                setOptionals(opt);
+            }}
+            stringValues={new Map([
+                [repoField, repository],
+                [webField, website],
+                [iconField, icon],
+            ])}
+            nameValues={new Map([
+                [nameField, new Map([
+                    ["spanish", nameSp],
+                    ["english", nameEn],
+                ])],
+            ])}
+            listValues={new Map<Field<any>, any[]>([
+                [lanField, languages],
+                [catField, categories],
+            ])}
+            imagePrev={icon}
+            send={async () => {
+                let r: any;
+                switch(method) {
+                    case Method.POST:
+                        r = await postProject(user, {
+                            token,
+                            name: [
+                                {
+                                    translation: "spanish",
+                                    name: nameSp,
+                                },
+                                {
+                                    translation: "english",
+                                    name: nameEn,
+                                },
+                            ],
+                            repository,
+                            website: optionals.get(webField) ? website : undefined,
+                            icon: optionals.get(iconField) ? icon : undefined,
+                            languages: languages.map(l => l.name),
+                            categories: categories.map(c => c.id),
+                        });
+                        break;
+                    case Method.PATCH:
+                        r = await patchProject(user, selected?.id ?? 0, {
+                            token,
+                            name: optionals.get(nameField) ? [
+                                {
+                                    translation: "spanish",
+                                    name: nameSp,
+                                },
+                                {
+                                    translation: "english",
+                                    name: nameEn,
+                                },
+                            ] : undefined,
+                            repository: optionals.get(repoField) ? repository : undefined,
+                            website: optionals.get(webField) ? website : undefined,
+                            icon: optionals.get(iconField) ? icon : undefined,
+                            languages: languages.map(l => l.name),
+                            categories: categories.map(c => c.id),
+                        });
+                        break;
+                    case Method.DELETE:
+                        r = await deleteProject(user, selected?.id ?? 0, token);
+                        break;
+                }
+                setResponse(r);
+            }}
+        />
+    );
+};

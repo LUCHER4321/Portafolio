@@ -33,3 +33,19 @@ export interface UserDTO {
 export interface Delete {
     message: string;
 }
+
+export type Lan = "spanish" | "english";
+
+export interface Field<T> {
+    postExclusive?: boolean;
+    name: string;
+    optional?: boolean;
+    type: "string" | "name" | "list";
+    setString?: (s: string) => void;
+    setSpanish?: (n: string) => void;
+    setEnglish?: (n: string) => void;
+    setItem?: (l: T, b: boolean) => void;
+    items?: () => T[];
+    iconFunc?: (t: T) => string;
+    nameFunc?: (t: T) => string;
+}

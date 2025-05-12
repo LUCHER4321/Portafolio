@@ -81,7 +81,7 @@ export const patchProject = async (user: string, id: number, body: Patch): Promi
     }
 };
 
-export const deleteProject = async (user: string, id: string, token: string): Promise<Delete> => {
+export const deleteProject = async (user: string, id: number, token: string): Promise<Delete> => {
     try {
         const result = await fetch(BACKEND_URL + `api/portfolio/projects/${user}/${id}`, {
             method: "DELETE",
