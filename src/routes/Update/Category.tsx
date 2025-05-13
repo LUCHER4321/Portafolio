@@ -32,8 +32,8 @@ export const CategoryUpdate = ({}) => {
         setString: setIcon,
     };
     const [optionals, setOptionals] = useState(new Map([
-        [nameField, false],
-        [iconField, false],
+        [nameField.name, false],
+        [iconField.name, false],
     ]));
 
     useEffect(() => {
@@ -58,7 +58,7 @@ export const CategoryUpdate = ({}) => {
             response={response}
             optionals={optionals}
             setOptional={(f, b) => {
-                const opt = new Map(optionals);
+                const opt = new Map([...optionals.entries()]);
                 opt.set(f, b);
                 setOptionals(opt);
             }}
@@ -97,7 +97,7 @@ export const CategoryUpdate = ({}) => {
                     case Method.PATCH:
                         r = await patchCategory(selected?.id ?? "", {
                             token,
-                            name: optionals.get(nameField) ? [
+                            name: optionals.get(nameField.name) ? [
                                 {
                                     translation: "spanish",
                                     name: nameSp,
@@ -107,6 +107,7 @@ export const CategoryUpdate = ({}) => {
                                     name: nameEn,
                                 },
                             ] : undefined,
+                            icon: optionals.get(iconField.name) ? icon : undefined,
                         });
                         break;
                     case Method.DELETE:
