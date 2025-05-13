@@ -13,8 +13,8 @@ interface UpdatePorps<T> {
     setSelected: (t: T) => void;
     fields: Field<any>[];
     response?: T;
-    optionals: Map<Field<any>, boolean>;
-    setOptional: (f: Field<any>, b: boolean) => void;
+    optionals: Map<string, boolean>;
+    setOptional: (f: string, b: boolean) => void;
     stringValues: Map<Field<any>, string>;
     nameValues: Map<Field<any>, Map<Lan, string>>;
     listValues: Map<Field<any>, any[]>;
@@ -158,8 +158,8 @@ export const Update = <T,>({
                                     {f.name} {(method === Method.PATCH || f.optional) &&
                                         <input
                                             type="checkbox"
-                                            checked={optionals.get(f)}
-                                            onChange={e => setOptional(f, e.target.checked)}
+                                            checked={optionals.get(f.name)}
+                                            onChange={e => setOptional(f.name, e.target.checked)}
                                         />}
                                 </label>
                             </td>
