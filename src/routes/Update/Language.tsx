@@ -23,8 +23,8 @@ export const LanguageUpdate = ({}) => {
         setString: setImage,
     };
     const [optionals, setOptionals] = useState(new Map([
-        [nameField, false],
-        [imageField, false],
+        [nameField.name, false],
+        [imageField.name, false],
     ]));
 
     useEffect(() => {
@@ -48,7 +48,7 @@ export const LanguageUpdate = ({}) => {
             response={response}
             optionals={optionals}
             setOptional={(f, b) => {
-                const opt = new Map(optionals);
+                const opt = new Map([...optionals.entries()]);
                 opt.set(f, b);
                 setOptionals(opt);
             }}
@@ -72,8 +72,8 @@ export const LanguageUpdate = ({}) => {
                     case Method.PATCH:
                         r = await patchLanguage(selected?.id ?? 0, {
                             token,
-                            name: optionals.get(nameField) ? name : undefined,
-                            image: optionals.get(imageField) ? image : undefined,
+                            name: optionals.get(nameField.name) ? name : undefined,
+                            image: optionals.get(imageField.name) ? image : undefined,
                         });
                         break;
                     case Method.DELETE:
