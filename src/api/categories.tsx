@@ -38,6 +38,9 @@ export const postCategory = async(body: Post): Promise<CategoryDTO> => {
     try {
         const result = await fetch(BACKEND_URL + "api/portfolio/categories", {
             method: "POST",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify(body),
         });
         const json = await result.json();
@@ -59,6 +62,9 @@ export const patchCategory = async(id: string, body: Patch): Promise<CategoryDTO
     try {
         const result = await fetch(BACKEND_URL + `api/portfolio/categories/${id}`, {
             method: "PATCH",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify(body),
         });
         const json = await result.json();
@@ -76,6 +82,9 @@ export const deleteCategory = async (id: string, token: string): Promise<Delete>
     try {
         const result = await fetch(BACKEND_URL + `api/portfolio/categories/${id}`, {
             method: "DELETE",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify({ token }),
         });
         const json = await result.json();
