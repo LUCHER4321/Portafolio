@@ -72,13 +72,13 @@ export const ProjectUpdate = ({}) => {
         iconFunc: c => c.icon,
         nameFunc: c => c.name.map(c1 => c1.name).join("; "),
     };
-    const [optionals, setOptionals] = useState(new Map<Field<any>, boolean>([
-        [nameField, false],
-        [repoField, false],
-        [webField, false],
-        [iconField, false],
-        [lanField, false],
-        [catField, false],
+    const [optionals, setOptionals] = useState(new Map([
+        [nameField.name, false],
+        [repoField.name, false],
+        [webField.name, false],
+        [iconField.name, false],
+        [lanField.name, false],
+        [catField.name, false],
     ]));
 
     useEffect(() => {
@@ -112,7 +112,7 @@ export const ProjectUpdate = ({}) => {
             response={response}
             optionals={optionals}
             setOptional={(f, b) => {
-                const opt = new Map(optionals);
+                const opt = new Map([...optionals.entries()]);
                 opt.set(f, b);
                 setOptionals(opt);
             }}
@@ -149,8 +149,8 @@ export const ProjectUpdate = ({}) => {
                                 },
                             ],
                             repository,
-                            website: optionals.get(webField) ? website : undefined,
-                            icon: optionals.get(iconField) ? icon : undefined,
+                            website: optionals.get(webField.name) ? website : undefined,
+                            icon: optionals.get(iconField.name) ? icon : undefined,
                             languages: languages.map(l => l.name),
                             categories: categories.map(c => c.id),
                         });
@@ -158,7 +158,7 @@ export const ProjectUpdate = ({}) => {
                     case Method.PATCH:
                         r = await patchProject(user, selected?.id ?? 0, {
                             token,
-                            name: optionals.get(nameField) ? [
+                            name: optionals.get(nameField.name) ? [
                                 {
                                     translation: "spanish",
                                     name: nameSp,
@@ -168,11 +168,11 @@ export const ProjectUpdate = ({}) => {
                                     name: nameEn,
                                 },
                             ] : undefined,
-                            repository: optionals.get(repoField) ? repository : undefined,
-                            website: optionals.get(webField) ? website : undefined,
-                            icon: optionals.get(iconField) ? icon : undefined,
-                            languages: languages.map(l => l.name),
-                            categories: categories.map(c => c.id),
+                            repository: optionals.get(repoField.name) ? repository : undefined,
+                            website: optionals.get(webField.name) ? website : undefined,
+                            icon: optionals.get(iconField.name) ? icon : undefined,
+                            languages: optionals.get(lanField.name) ? languages.map(l => l.name) : undefined,
+                            categories: optionals.get(catField.name) ? categories.map(c => c.id) : undefined,
                         });
                         break;
                     case Method.DELETE:
