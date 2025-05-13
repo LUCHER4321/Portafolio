@@ -18,7 +18,7 @@ export const CategoryPage = () => {
                 )?.name ?? ""
             )
         );
-    }, []);
+    }, [language]);
     return (
         <>
             <NavBar language={language} setLanguage={setLanguage}/>

@@ -8,9 +8,9 @@ interface UpdatePorps<T> {
     setToken: (s: string) => void;
     method: Method;
     setMethod: (m: Method) => void;
-    options: T[];
-    selected?: T;
-    setSelected: (t: T) => void;
+    options: (number | string)[];
+    selected?: number | string;
+    setSelected: (id: number | string) => void;
     fields: Field<any>[];
     response?: T;
     optionals: Map<string, boolean>;
@@ -135,8 +135,8 @@ export const Update = <T,>({
                     <td>
                         {method !== Method.POST &&
                             <select
-                                value={JSON.stringify(selected)}
-                                onChange={e => setSelected(JSON.parse(e.target.value))}
+                                value={selected}
+                                onChange={e => setSelected(typeof selected === "string" ? e.target.value : +e.target.value)}
                             >
                                 {options.map((o, index) => (
                                     <option key={index} value={JSON.stringify(o)}>

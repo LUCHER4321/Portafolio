@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Method } from "../../enum";
-import { CategoryDTO, Field, LanguageDTO, ProjectDTO } from "../../types";
+import { CategoryDTO, Field, LanguageDTO } from "../../types";
 import { Update } from "../../components/Update";
 import { getUser } from "../../api/user";
 import { deleteProject, getProjects, patchProject, postProject } from "../../api/projects";
@@ -11,8 +11,8 @@ export const ProjectUpdate = ({}) => {
     const [user, setUser] = useState("");
     const [token, setToken] = useState("");
     const [method, setMethod] = useState(Method.POST);
-    const [options, setOptions] = useState<ProjectDTO[]>([]);
-    const [selected, setSelected] = useState<ProjectDTO>();
+    const [options, setOptions] = useState<number[]>([]);
+    const [selected, setSelected] = useState<number>(0);
     const [nameSp, setSpanish] = useState("");
     const [nameEn, setEnglish] = useState("");
     const [repository, setRepository] = useState("");
@@ -85,7 +85,7 @@ export const ProjectUpdate = ({}) => {
         getUser().then(
             u => {
                 setUser(u.id);
-                getProjects({user: u.id}).then(P => setOptions(P));
+                getProjects({user: u.id}).then(P => setOptions(P.map(p => p.id)));
             }
         );
         getLanguages().then(L => setLanguagesOpt(L));
@@ -100,7 +100,9 @@ export const ProjectUpdate = ({}) => {
             setMethod={setMethod}
             options={options}
             selected={selected}
-            setSelected={setSelected}
+            setSelected={id => {
+                if(typeof id !== "string") setSelected(id);
+            }}
             fields={[
                 nameField,
                 repoField,
@@ -156,7 +158,8 @@ export const ProjectUpdate = ({}) => {
                         });
                         break;
                     case Method.PATCH:
-                        r = await patchProject(user, selected?.id ?? 0, {
+                        console.log("Selected:", selected);
+                        r = await patchProject(user, selected ?? 0, {
                             token,
                             name: optionals.get(nameField.name) ? [
                                 {
@@ -176,7 +179,7 @@ export const ProjectUpdate = ({}) => {
                         });
                         break;
                     case Method.DELETE:
-                        r = await deleteProject(user, selected?.id ?? 0, token);
+                        r = await deleteProject(user, selected ?? 0, token);
                         break;
                 }
                 setResponse(r);

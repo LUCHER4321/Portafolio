@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Method } from "../../enum";
-import { CategoryDTO, Field } from "../../types";
+import { Field } from "../../types";
 import { deleteCategory, getCategories, patchCategory, postCategory } from "../../api/categories";
 import { Update } from "../../components/Update";
 
 export const CategoryUpdate = ({}) => {
     const [token, setToken] = useState("");
     const [method, setMethod] = useState(Method.POST);
-    const [options, setOptions] = useState<CategoryDTO[]>([]);
-    const [selected, setSelected] = useState<CategoryDTO>();
+    const [options, setOptions] = useState<string[]>([]);
+    const [selected, setSelected] = useState<string>("");
     const [id, setId] = useState("");
     const [nameSp, setSpanish] = useState("");
     const [nameEn, setEnglish] = useState("");
@@ -37,7 +37,7 @@ export const CategoryUpdate = ({}) => {
     ]));
 
     useEffect(() => {
-        getCategories().then(C => setOptions(C));
+        getCategories().then(C => setOptions(C.map(c => c.id)));
     }, []);
 
     return (
@@ -49,7 +49,9 @@ export const CategoryUpdate = ({}) => {
             setMethod={setMethod}
             options={options}
             selected={selected}
-            setSelected={setSelected}
+            setSelected={id => {
+                if(typeof id !== "number") setSelected(id);
+            }}
             fields={[
                 idField,
                 nameField,
@@ -95,7 +97,7 @@ export const CategoryUpdate = ({}) => {
                         });
                         break;
                     case Method.PATCH:
-                        r = await patchCategory(selected?.id ?? "", {
+                        r = await patchCategory(selected ?? "", {
                             token,
                             name: optionals.get(nameField.name) ? [
                                 {
@@ -111,7 +113,7 @@ export const CategoryUpdate = ({}) => {
                         });
                         break;
                     case Method.DELETE:
-                        r = await deleteCategory(selected?.id ?? "", token);
+                        r = await deleteCategory(selected ?? "", token);
                         break;
                 }
                 setResponse(r);

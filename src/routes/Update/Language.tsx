@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Update } from "../../components/Update";
 import { Method } from "../../enum";
-import { Field, LanguageDTO } from "../../types";
+import { Field } from "../../types";
 import { deleteLanguage, getLanguages, patchLanguage, postLanguage } from "../../api/languages";
 
 export const LanguageUpdate = ({}) => {
     const [token, setToken] = useState("");
     const [method, setMethod] = useState(Method.POST);
-    const [options, setOptions] = useState<LanguageDTO[]>([]);
-    const [selected, setSelected] = useState<LanguageDTO>();
+    const [options, setOptions] = useState<number[]>([]);
+    const [selected, setSelected] = useState<number>(0);
     const [name, setName] = useState("");
     const [image, setImage] = useState("");
     const [response, setResponse] = useState<any>({});
@@ -28,7 +28,7 @@ export const LanguageUpdate = ({}) => {
     ]));
 
     useEffect(() => {
-        getLanguages().then(L => setOptions(L));
+        getLanguages().then(L => setOptions(L.map(l => l.id)));
     }, []);
 
     return (
@@ -40,7 +40,9 @@ export const LanguageUpdate = ({}) => {
             setMethod={setMethod}
             options={options}
             selected={selected}
-            setSelected={setSelected}
+            setSelected={id => {
+                if(typeof id !== "string") setSelected(id);
+            }}
             fields={[
                 nameField,
                 imageField,
@@ -70,14 +72,14 @@ export const LanguageUpdate = ({}) => {
                         });
                         break;
                     case Method.PATCH:
-                        r = await patchLanguage(selected?.id ?? 0, {
+                        r = await patchLanguage(selected ?? 0, {
                             token,
                             name: optionals.get(nameField.name) ? name : undefined,
                             image: optionals.get(imageField.name) ? image : undefined,
                         });
                         break;
                     case Method.DELETE:
-                        r = await deleteLanguage(selected?.id ?? 0, token);
+                        r = await deleteLanguage(selected ?? 0, token);
                         break;
                 }
                 setResponse(r);
