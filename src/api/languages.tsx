@@ -38,6 +38,9 @@ export const postLanguage = async (body: Post): Promise<LanguageDTO> => {
     try {
         const result = await fetch(BACKEND_URL + "api/portfolio/languages", {
             method: "POST",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify(body),
         });
         const json = await result.json();
@@ -59,6 +62,9 @@ export const patchLanguage = async (id: number, body: Patch): Promise<LanguageDT
     try {
         const result = await fetch(BACKEND_URL + `api/portfolio/languages/${id}`, {
             method: "PATCH",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify(body),
         });
         const json = await result.json();
@@ -76,6 +82,9 @@ export const deleteLanguage = async (id: number, token: string): Promise<Delete>
     try {
         const result = await fetch(BACKEND_URL + `api/portfolio/languages/${id}`, {
             method: "DELETE",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify({ token }),
         });
         const json = await result.json();
