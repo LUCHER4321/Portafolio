@@ -43,6 +43,9 @@ export const postProject = async (user: string, body: Post): Promise<ProjectDTO>
     try {
         const result = await fetch(BACKEND_URL + `api/portfolio/projects/${user}`, {
             method: "POST",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify(body),
         });
         const json = await result.json();
@@ -66,6 +69,9 @@ export const patchProject = async (user: string, id: number, body: Patch): Promi
     try {
         const result = await fetch(BACKEND_URL + `api/portfolio/projects/${user}/${id}`, {
             method: "PATCH",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify(body),
         });
         const json = await result.json();
@@ -85,6 +91,9 @@ export const deleteProject = async (user: string, id: number, token: string): Pr
     try {
         const result = await fetch(BACKEND_URL + `api/portfolio/projects/${user}/${id}`, {
             method: "DELETE",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify({ token }),
         });
         const json = await result.json();
