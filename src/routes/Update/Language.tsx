@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Update } from "../../components/Update";
 import { Method } from "../../enum";
-import { Field } from "../../types";
+import { Field, LanguageDTO } from "../../types";
 import { deleteLanguage, getLanguages, patchLanguage, postLanguage } from "../../api/languages";
 
 export const LanguageUpdate = ({}) => {
     const [token, setToken] = useState("");
     const [method, setMethod] = useState(Method.POST);
-    const [options, setOptions] = useState<number[]>([]);
+    const [options, setOptions] = useState<LanguageDTO[]>([]);
     const [selected, setSelected] = useState<number>(0);
     const [name, setName] = useState("");
     const [image, setImage] = useState("");
@@ -27,8 +27,14 @@ export const LanguageUpdate = ({}) => {
         [imageField.name, false],
     ]));
 
+    const setLanguage = (id: number) => {
+        const language = options.find(l => l.id === id);
+        setName(language?.name ?? "");
+        setImage(language?.image ?? "");
+    };
+
     useEffect(() => {
-        getLanguages().then(L => setOptions(L.map(l => l.id)));
+        getLanguages().then(L => setOptions(L));
     }, []);
 
     return (
@@ -37,11 +43,17 @@ export const LanguageUpdate = ({}) => {
             token={token}
             setToken={setToken}
             method={method}
-            setMethod={setMethod}
+            setMethod={m => {
+                setMethod(m);
+                if(m !== Method.POST) setLanguage(selected ?? options[0].id);
+            }}
             options={options}
+            toValue={(l: LanguageDTO) => l.id}
+            toDisplay={l => `${l.id}: ${l.name}`}
             selected={selected}
             setSelected={id => {
                 if(typeof id !== "string") setSelected(id);
+                setLanguage(id as number);
             }}
             fields={[
                 nameField,

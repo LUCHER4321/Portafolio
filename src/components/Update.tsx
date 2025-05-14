@@ -1,6 +1,5 @@
 import { Method } from "../enum";
 import { Field, Lan } from "../types";
-import { ImageLink } from "./ImageLink";
 
 interface UpdatePorps<T> {
     title: string;
@@ -8,7 +7,9 @@ interface UpdatePorps<T> {
     setToken: (s: string) => void;
     method: Method;
     setMethod: (m: Method) => void;
-    options: (number | string)[];
+    options: T[];
+    toValue: (t: T) => number | string;
+    toDisplay: (t: T) => string;
     selected?: number | string;
     setSelected: (id: number | string) => void;
     fields: Field<any>[];
@@ -29,6 +30,8 @@ export const Update = <T,>({
     method,
     setMethod,
     options,
+    toValue,
+    toDisplay,
     selected,
     setSelected,
     fields,
@@ -41,7 +44,7 @@ export const Update = <T,>({
     imagePrev,
     send,
 }: UpdatePorps<T>) => {
-    const fieldSwitch = (f: Field<any>) => {
+    const fieldSwitch = <V,>(f: Field<V>) => {
         switch(f.type) {
             case "string":
                 return <input
@@ -82,23 +85,30 @@ export const Update = <T,>({
                     </tbody>
                 </table>
             case "list":
-                return <ul>
-                    {f.items?.().map((item, index) => (
-                        <li key={index}>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    checked={listValues.get(f)?.includes(item)}
-                                    onChange={e => f.setItem?.(item, e.target.checked)}
-                                /> <ImageLink
-                                    link=""
-                                    image={f.iconFunc?.(item)}
-                                    height={25}
-                                /> {f.nameFunc?.(item)}
-                            </label>
-                        </li>
-                    ))}
-                </ul>
+                return <table>
+                    <tbody>
+                        {f.items?.().map((item, index) => (
+                            <tr key={index}>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        checked={listValues.get(f)?.includes(item)}
+                                        onChange={e => f.setItem?.(item, e.target.checked)}
+                                    />
+                                </td>
+                                <td>
+                                    <img
+                                        src={f.iconFunc?.(item)}
+                                        style={{maxHeight: 25}}
+                                    />
+                                </td>
+                                <td>
+                                    {f.nameFunc?.(item)}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
         }
     };
     return (
@@ -119,41 +129,42 @@ export const Update = <T,>({
                         />
                     </td>
                 </tr>
-                <tr>
-                    <td>
+                <tr className="border">
+                    <td className="border">
                         <select
                             value={method}
                             onChange={e => setMethod(e.target.value as Method)}
                         >
                             {Object.values(Method).map((m, index) => (
-                                <option key={index} value={m}>
+                                <option key={index} value={m} className="bg-[#27273E]">
                                     {m}
                                 </option>
                             ))}
                         </select>
                     </td>
-                    <td>
+                    <td className="border">
                         {method !== Method.POST &&
                             <select
                                 value={selected}
                                 onChange={e => setSelected(typeof selected === "string" ? e.target.value : +e.target.value)}
+                                className="border"
                             >
                                 {options.map((o, index) => (
-                                    <option key={index} value={JSON.stringify(o)}>
-                                        {JSON.stringify(o)}
+                                    <option key={index} value={toValue(o)} className="bg-[#27273E]">
+                                        {toDisplay(o)}
                                     </option>
                                 ))}
                             </select>
                         }
                     </td>
-                    <td rowSpan={(method !== Method.DELETE ? fields.length : 0) + 2}>
+                    <td rowSpan={(method !== Method.DELETE ? fields.length : 0) + 2} className="border">
                         {JSON.stringify(response)}
                     </td>
                 </tr>
                 {method !== Method.DELETE && fields.map((f, index) => (
-                    <tr key={index}>
+                    <tr key={index} className="border">
                         {(method === Method.POST || !f.postExclusive) && <>
-                            <td>
+                            <td className="border">
                                 <label>
                                     {f.name} {(method === Method.PATCH || f.optional) &&
                                         <input
@@ -163,18 +174,17 @@ export const Update = <T,>({
                                         />}
                                 </label>
                             </td>
-                            <td>
+                            <td className="border">
                                 {fieldSwitch(f)}
                             </td>
                         </>}
                     </tr>
                 ))}
                 <tr>
-                    <td colSpan={2}>
-                        <ImageLink
-                            link=""
-                            image={imagePrev === "" ? undefined : imagePrev}
-                            height={50}
+                    <td colSpan={2} className="border">
+                        <img
+                            src={imagePrev === "" ? undefined : imagePrev}
+                            style={{maxHeight: 50}}
                         />
                     </td>
                 </tr>

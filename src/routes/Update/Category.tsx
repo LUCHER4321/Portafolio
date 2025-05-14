@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Method } from "../../enum";
-import { Field } from "../../types";
+import { CategoryDTO, Field } from "../../types";
 import { deleteCategory, getCategories, patchCategory, postCategory } from "../../api/categories";
 import { Update } from "../../components/Update";
 
 export const CategoryUpdate = ({}) => {
     const [token, setToken] = useState("");
     const [method, setMethod] = useState(Method.POST);
-    const [options, setOptions] = useState<string[]>([]);
+    const [options, setOptions] = useState<CategoryDTO[]>([]);
     const [selected, setSelected] = useState<string>("");
     const [id, setId] = useState("");
     const [nameSp, setSpanish] = useState("");
@@ -36,8 +36,15 @@ export const CategoryUpdate = ({}) => {
         [iconField.name, false],
     ]));
 
+    const setCategory = (id: string) => {
+        const category = options.find(c => c.id === id);
+        setSpanish(category?.name.find(n => n.translation === "spanish")?.name ?? "");
+        setEnglish(category?.name.find(n => n.translation === "english")?.name ?? "");
+        setIcon(category?.icon ?? "");
+    };
+
     useEffect(() => {
-        getCategories().then(C => setOptions(C.map(c => c.id)));
+        getCategories().then(C => setOptions(C));
     }, []);
 
     return (
@@ -46,11 +53,17 @@ export const CategoryUpdate = ({}) => {
             token={token}
             setToken={setToken}
             method={method}
-            setMethod={setMethod}
+            setMethod={m => {
+                setMethod(m);
+                if(m !== Method.POST) setCategory(selected ?? options[0].id);
+            }}
             options={options}
+            toValue={(c: CategoryDTO) => c.id}
+            toDisplay={c => `${c.id}: ${c.name.map(c1 => c1.name).join("; ")}`}
             selected={selected}
             setSelected={id => {
                 if(typeof id !== "number") setSelected(id);
+                setCategory(id as string);
             }}
             fields={[
                 idField,

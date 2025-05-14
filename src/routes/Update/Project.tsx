@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Method } from "../../enum";
-import { CategoryDTO, Field, LanguageDTO } from "../../types";
+import { CategoryDTO, Field, LanguageDTO, ProjectDTO } from "../../types";
 import { Update } from "../../components/Update";
 import { getUser } from "../../api/user";
 import { deleteProject, getProjects, patchProject, postProject } from "../../api/projects";
@@ -11,8 +11,8 @@ export const ProjectUpdate = ({}) => {
     const [user, setUser] = useState("");
     const [token, setToken] = useState("");
     const [method, setMethod] = useState(Method.POST);
-    const [options, setOptions] = useState<number[]>([]);
-    const [selected, setSelected] = useState<number>(0);
+    const [options, setOptions] = useState<ProjectDTO[]>([]);
+    const [selected, setSelected] = useState<number>();
     const [nameSp, setSpanish] = useState("");
     const [nameEn, setEnglish] = useState("");
     const [repository, setRepository] = useState("");
@@ -81,11 +81,28 @@ export const ProjectUpdate = ({}) => {
         [catField.name, false],
     ]));
 
+    const setProject = (id: number) => {
+        const project = options.find(p => p.id === id);
+        setSpanish(project?.name.find(n => n.translation === "spanish")?.name ?? "");
+        setEnglish(project?.name.find(n => n.translation === "english")?.name ?? "");
+        setRepository(project?.repository ?? "");
+        setWebsite(project?.website ?? "");
+        setIcon(project?.icon ?? "");
+        const selectedLanguages = languagesOpt.filter(l => 
+            project?.languages.some(pl => pl.name === l.name)
+        );
+        setLanguages(selectedLanguages);
+        const selectedCategories = categoriesOpt.filter(c => 
+            project?.categories.some(pc => pc.id === c.id)
+        );
+        setCategories(selectedCategories);
+    };
+
     useEffect(() => {
         getUser().then(
             u => {
                 setUser(u.id);
-                getProjects({user: u.id}).then(P => setOptions(P.map(p => p.id)));
+                getProjects({user: u.id}).then(P => setOptions(P));
             }
         );
         getLanguages().then(L => setLanguagesOpt(L));
@@ -97,11 +114,17 @@ export const ProjectUpdate = ({}) => {
             token={token}
             setToken={setToken}
             method={method}
-            setMethod={setMethod}
+            setMethod={m => {
+                setMethod(m);
+                if(m !== Method.POST) setProject(selected ?? options[0].id);
+            }}
             options={options}
+            toValue={(p: ProjectDTO) => p.id}
+            toDisplay={p => `${p.id}: ${p.name.map(p1 => p1.name).join("; ")}`}
             selected={selected}
             setSelected={id => {
                 if(typeof id !== "string") setSelected(id);
+                setProject(id as number);
             }}
             fields={[
                 nameField,
@@ -158,7 +181,6 @@ export const ProjectUpdate = ({}) => {
                         });
                         break;
                     case Method.PATCH:
-                        console.log("Selected:", selected);
                         r = await patchProject(user, selected ?? 0, {
                             token,
                             name: optionals.get(nameField.name) ? [
