@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Method } from "../enum";
 import { Field, Lan } from "../types";
 
@@ -44,6 +45,9 @@ export const Update = <T,>({
     imagePrev,
     send,
 }: UpdatePorps<T>) => {
+    useEffect(() => {
+        document.title = `Updating ${title}`;
+    }, []);
     const fieldSwitch = <V,>(f: Field<V>) => {
         switch(f.type) {
             case "string":

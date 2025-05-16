@@ -5,7 +5,7 @@ import './App.css'
 import { PersonalLink } from './classes/PersonalLink';
 import { links } from './data/links';
 import { Language } from './classes/Language';
-import { codeText } from './functions/translate';
+import { codeText, codeTextAlt } from './functions/translate';
 import { NavBar } from './components/NavBar';
 import { Category } from './classes/Category';
 import { ContactForm } from './components/ContactFrom';
@@ -14,7 +14,7 @@ import { getUser } from './api/user';
 import { getCategories } from './api/categories';
 
 function App() {
-  const [language, setLanguage] = useState("spanish");
+  const [language, setLanguage] = useState(localStorage.getItem("language") ?? "spanish");
   const [remoteLan, setRemoteLan] = useState<Language[]>([]);
   const [remoteCat, setRemoteCat] = useState<Category[]>([]);
   useEffect(() => {
@@ -37,6 +37,10 @@ function App() {
       }
     );
   }, []);
+  useEffect(() => {
+    localStorage.setItem("language", language);
+    codeTextAlt("ttl00", language).then(ttl => document.title = ttl);
+  }, [language]);
 
   return (
     <>

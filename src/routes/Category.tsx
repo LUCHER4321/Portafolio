@@ -6,7 +6,7 @@ import { getCategory } from "../api/categories";
 import { useParams } from "react-router-dom";
 
 export const CategoryPage = () => {
-    const [language, setLanguage] = useState("spanish");
+    const [language, setLanguage] = useState(localStorage.getItem("language") ?? "spanish");
     const [titleParam, setTitleParam] = useState("");
     const { cat } = useParams();
     useEffect(() => {
@@ -18,6 +18,7 @@ export const CategoryPage = () => {
                 )?.name ?? ""
             )
         );
+        localStorage.setItem("language", language);
     }, [language]);
     return (
         <>

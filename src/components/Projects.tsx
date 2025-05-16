@@ -1,5 +1,5 @@
 import { Project } from "../classes/Project";
-import { codeText } from "../functions/translate";
+import { codeText, codeTextAlt } from "../functions/translate";
 import { useEffect, useState } from "react";
 import { getUser } from "../api/user";
 import { getProjects } from "../api/projects";
@@ -22,6 +22,9 @@ export const ProjectsPage = ({language, titleCode, titleParam}: projectsPageProp
             )
         ));
     }, []);
+    useEffect(() => {
+        codeTextAlt(titleCode, language, [titleParam]).then(ttl => document.title = ttl);
+    }, [language]);
     return (
         <>
             <div className="flex flex-col justify-center mt-8">
