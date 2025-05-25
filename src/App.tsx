@@ -12,6 +12,7 @@ import { ContactForm } from './components/ContactFrom';
 import { getLanguages } from './api/languages';
 import { getUser } from './api/user';
 import { getCategories } from './api/categories';
+import { Loading } from './components/Loading';
 
 function App() {
   const [language, setLanguage] = useState(localStorage.getItem("language") ?? "spanish");
@@ -67,6 +68,7 @@ function App() {
         </div>
         <div className="flex flex-col">
           <h2>{codeText("stt03", language)}</h2>
+          {remoteCat.length > 0 ?
           <Category.Table
             categories={remoteCat}
             href={c => `/Portafolio/Category/${c.id}`}
@@ -74,10 +76,11 @@ function App() {
             imgClassName="flex justify-center p-2.5"
             size={30}
             hoverSize={35}
-          />
+          /> : <Loading height={80}/>}
         </div>
         <div className="flex flex-col sm:w-2/7">
           <h2>{codeText("stt01", language)}</h2>
+          {remoteLan.length > 0 ?
           <Language.List
             languages={remoteLan}
             href={l => `/Portafolio/Language/${l.name}`}
@@ -85,7 +88,7 @@ function App() {
             buttonClassName="flex m-1 justify-center p-2.5"
             size={30}
             hoverSize={40}
-          />
+          /> : <Loading height={80}/>}
         </div>
       </div>
       <ContactForm language={language}/>

@@ -13,12 +13,16 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/Portafolio" element={<App/>}/>
-        <Route path="/Portafolio/Language/:lan" element={<LanguagePage/>}/>
-        <Route path="/Portafolio/Category/:cat" element={<CategoryPage/>}/>
-        <Route path="/Portafolio/Update/Language" element={<LanguageUpdate/>}/>
-        <Route path="/Portafolio/Update/Category" element={<CategoryUpdate/>}/>
-        <Route path="/Portafolio/Update/Project" element={<ProjectUpdate/>}/>
+        <Route path="/Portafolio">
+          <Route index element={<App/>} />
+          <Route path="Language/:lan" element={<LanguagePage/>} />
+          <Route path="Category/:cat" element={<CategoryPage/>} />
+          <Route path="Update">
+            <Route path="Language" element={<LanguageUpdate/>} />
+            <Route path="Category" element={<CategoryUpdate/>} />
+            <Route path="Project" element={<ProjectUpdate/>} />
+          </Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

@@ -12,7 +12,7 @@ export class Project {
     icon?: string;
     languages: Language[] = [];
 
-    private static GitHubLogo = "https://logo.clearbit.com/github.com";
+    private static GitHubLogo = "https://img.logo.dev/github.com?token=pk_VXzZR_o_QTelazRSvSRkNw&format=png";
     private static APKsFolder = "/Portafolio/APKs/";
 
     constructor(dto: ProjectDTO) {
