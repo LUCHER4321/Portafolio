@@ -24,12 +24,12 @@ export const ProjectsPage = ({language, titleCode, titleParam}: projectsPageProp
         ));
     }, []);
     useEffect(() => {
-        codeTextAlt(titleCode, language, [titleParam]).then(ttl => document.title = ttl);
-    }, [language]);
+        if(titleParam !== "") codeTextAlt(titleCode, language, [titleParam]).then(ttl => document.title = ttl);
+    }, [language, titleParam]);
     return (
         <>
             <div className="flex flex-col justify-center mt-8">
-                <h1>{codeText(titleCode, language, [titleParam])}</h1>
+                <h1>{codeText(titleParam !== "" ? titleCode : "", language, [titleParam])}</h1>
                 {remoteProy.length > 0 ?
                 <Project.List
                     language={language}
