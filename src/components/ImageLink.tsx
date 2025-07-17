@@ -26,7 +26,6 @@ export const ImageLink = ({link, image = undefined, height = 128, hoverHeight, c
             <img
                 style={{
                     height: currentHeight,
-                    width: currentHeight,
                     transition: 'height 0.3s ease',
                 }}
                 src={image ?? defaultImage}
