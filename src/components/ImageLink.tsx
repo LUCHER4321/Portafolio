@@ -19,13 +19,14 @@ export const ImageLink = ({link, image = undefined, height = 128, hoverHeight, c
         <a
             href={link}
             target={blank ? "_blank" : "_self"}
-            className={`flex justify-center items-center${className ? " " + className : ""}`}
+            className={`flex justify-center items-center ${className ? " " + className : ""}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
             <img
                 style={{
                     height: currentHeight,
+                    width: currentHeight,
                     transition: 'height 0.3s ease',
                 }}
                 src={image ?? defaultImage}
