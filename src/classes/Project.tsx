@@ -38,7 +38,7 @@ export class Project {
             }}>
                 <h2>{project?.name.get(language) ?? [...(project?.name.values() ?? [])][0]}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2">
-                    <h3>{codeText("hdr01", language)}</h3>
+                    <h3 className="text-white">{codeText("hdr01", language)}</h3>
                     <ImageLink
                         link={project?.repository ?? ""}
                         image={Project.GitHubLogo}
@@ -46,7 +46,7 @@ export class Project {
                         hoverHeight={hoverSize}
                         className="sm:hidden"
                     />
-                    <h3 className={project?.website ? "" : "hidden sm:flex m-0!"}>{project?.website ? codeText("hdr03" + (project.isAPK() ? "_d" : ""), language) : ""}</h3>
+                    <h3 className={(project?.website ? "" : "hidden sm:flex m-0! ") + "text-white"}>{project?.website ? codeText("hdr03" + (project.isAPK() ? "_d" : ""), language) : ""}</h3>
                     <ImageLink
                         link={project?.repository ?? ""}
                         image={Project.GitHubLogo}
@@ -61,7 +61,7 @@ export class Project {
                         hoverHeight={hoverSize}
                         className={project?.website ? "" : "hidden sm:flex"}
                     />
-                    <h3>{categories > 0 ? codeText("hdr04" + (categories > 1 ? "_p" : ""), language) : ""}</h3>
+                    <h3 className="text-white">{categories > 0 ? codeText("hdr04" + (categories > 1 ? "_p" : ""), language) : ""}</h3>
                     {categories > 0 && <Category.List
                         categories={project?.categories ?? []}
                         href={c => `/Portafolio/Category/${c.id}`}
@@ -71,7 +71,7 @@ export class Project {
                         hoverSize={hoverSize}
                         buttonClassName="mx-0.5"
                     />}
-                    <h3>{codeText("hdr02" + ((project?.languages.length ?? 0) > 1 ? "_p" : ""), language)}</h3>
+                    <h3 className="text-white">{codeText("hdr02" + ((project?.languages.length ?? 0) > 1 ? "_p" : ""), language)}</h3>
                     {categories > 0 && <Category.List
                         categories={project?.categories ?? []}
                         href={c => `/Portafolio/Category/${c.id}`}
