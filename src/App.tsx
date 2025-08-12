@@ -47,27 +47,27 @@ function App() {
     <>
       <NavBar language={language} setLanguage={setLanguage}/>
       <div className="flex md:flex-row flex-col md:items-center md:justify-around w-full">
-        <h1 className="align-middle md:w-1/5 w-full">Luciano Hernández</h1>
+        <h1 className="align-middle md:w-1/5 w-full text-white">Luciano Hernández</h1>
         <div className="flex flex-col text-justify my-4 w-full md:w-3/5">
           {
-            //<h2>{codeText("stt04", language)}</h2>
+            //<h2 className="text-white">{codeText("stt04", language)}</h2>
           }
-          <p>{codeText("prg00", language)}</p>
+          <p className="text-white">{codeText("prg00", language)}</p>
         </div>
       </div>
       <div className="flex flex-col sm:flex-row w-full sm:justify-around">
         <div className="flex flex-col">
-          <h2>{codeText("stt00", language)}</h2>
+          <h2 className="text-white">{codeText("stt00", language)}</h2>
           <PersonalLink.Table
             language={language}
             links={links}
             height={24}
             hoverHeight={32}
-            tdClassName="text-start py-0.5 pr-2"
+            tdClassName="text-start py-0.5 pr-2 text-white"
           />
         </div>
         <div className="flex flex-col">
-          <h2>{codeText("stt03", language)}</h2>
+          <h2 className="text-white">{codeText("stt03", language)}</h2>
           {remoteCat.length > 0 ?
           <Category.Table
             categories={remoteCat}
@@ -76,10 +76,11 @@ function App() {
             imgClassName="flex justify-center p-2.5"
             size={30}
             hoverSize={35}
+            className="text-white"
           /> : <Loading height={80}/>}
         </div>
         <div className="flex flex-col sm:w-2/7">
-          <h2>{codeText("stt01", language)}</h2>
+          <h2 className="text-white">{codeText("stt01", language)}</h2>
           {remoteLan.length > 0 ?
           <Language.List
             languages={remoteLan}
