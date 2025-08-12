@@ -73,7 +73,7 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                         ))}
                     </div>
                     <div className={"flex flex-col rounded" + ( projects ? " bg-[#7616AD]/75" : "")}>
-                        <button className="bg-white/0! mt-1.5 text-start" onClick={switchProjects}>
+                        <button className="bg-white/0! mt-1.5 text-start text-white" onClick={switchProjects}>
                             {codeText("stt02", language)}
                         </button>
                         <table className={`${projects ? "block" : "hidden"} bg-[#7616AD]/75 rounded`}>
@@ -81,13 +81,13 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                             <tr className=" align-top">
                                 <td>
                                     <button className="flex flex-row bg-white/0! text-start justify-between w-full" onClick={() => setCategoriesVisible(!categoriesVisible)}>
-                                        <div>{codeText("stt03", language)}</div>
-                                        <div className="ml-2">{">"}</div>
+                                        <div className="text-white">{codeText("stt03", language)}</div>
+                                        <div className="ml-2 text-white">{">"}</div>
                                     </button>
                                 </td>
                                 <td className={`${categoriesVisible ? "block" : "hidden"} flex flex-col`}>
                                     {remoteCat.map((category, index) => (
-                                        <a href={`/Portafolio/Category/${category.id}`} key={index} className="text-black! dark:text-white! py-2.5">
+                                        <a href={`/Portafolio/Category/${category.id}`} key={index} className="text-white! py-2.5">
                                             {category.name.get(language)}
                                         </a>
                                     ))}
@@ -96,8 +96,8 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                             <tr className="align-top">
                                 <td>
                                     <button className="flex flex-row bg-white/0! text-start justify-between" onClick={() => setLanguagesVisible(!languagesVisible)}>
-                                        <div>{codeText("stt01", language)}</div>
-                                        <div className="ml-2">{">"}</div>
+                                        <div className="text-white">{codeText("stt01", language)}</div>
+                                        <div className="ml-2 text-white">{">"}</div>
                                     </button>
                                 </td>
                                 <td className={`${languagesVisible ? "block" : "hidden"} flex flex-col`}>
@@ -115,10 +115,10 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                 <select
                     value={language}
                     onChange={(e) => setLanguage(e.target.value)}
-                    className="rounded"
+                    className="rounded text-white"
                 >
                     {Array.from(trLanguages).map(([key, value], index) => (
-                        <option value={key} key={index} className="bg-[#27273E]">
+                        <option value={key} key={index} className="bg-[#27273E] text-white">
                             {value}
                         </option>
                     ))}
