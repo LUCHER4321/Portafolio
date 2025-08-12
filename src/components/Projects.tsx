@@ -29,12 +29,12 @@ export const ProjectsPage = ({language, titleCode, titleParam}: projectsPageProp
     return (
         <>
             <div className="flex flex-col justify-center mt-8">
-                <h1>{codeText(titleParam !== "" ? titleCode : "", language, [titleParam])}</h1>
+                <h1 className="text-white">{codeText(titleParam !== "" ? titleCode : "", language, [titleParam])}</h1>
                 {remoteProy.length > 0 ?
                 <Project.List
                     language={language}
                     projects={remoteProy}
-                    className="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full mt-8"
+                    className="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full mt-8 text-white"
                 /> : <Loading height={250}/>}
             </div>
         </>
