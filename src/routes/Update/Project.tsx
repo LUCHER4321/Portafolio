@@ -15,6 +15,8 @@ export const ProjectUpdate = ({}) => {
     const [selected, setSelected] = useState<number>();
     const [nameSp, setSpanish] = useState("");
     const [nameEn, setEnglish] = useState("");
+    const [descSp, setDescSpanish] = useState("");
+    const [descEn, setDescEnglish] = useState("");
     const [repository, setRepository] = useState("");
     const [website, setWebsite] = useState("");
     const [icon, setIcon] = useState("");
@@ -28,6 +30,13 @@ export const ProjectUpdate = ({}) => {
         type: "name",
         setSpanish,
         setEnglish,
+    };
+    const descField: Field<unknown> = {
+        name: "description",
+        type: "name",
+        optional: true,
+        setSpanish: setDescSpanish,
+        setEnglish: setDescEnglish,
     };
     const repoField: Field<unknown> = {
         name: "repository",
@@ -74,6 +83,7 @@ export const ProjectUpdate = ({}) => {
     };
     const [optionals, setOptionals] = useState(new Map([
         [nameField.name, false],
+        [descField.name, false],
         [repoField.name, false],
         [webField.name, false],
         [iconField.name, false],
@@ -128,6 +138,7 @@ export const ProjectUpdate = ({}) => {
             }}
             fields={[
                 nameField,
+                descField,
                 repoField,
                 webField,
                 iconField,
@@ -151,6 +162,10 @@ export const ProjectUpdate = ({}) => {
                     ["spanish", nameSp],
                     ["english", nameEn],
                 ])],
+                [descField, new Map([
+                    ["spanish", descSp],
+                    ["english", descEn],
+                ])],
             ])}
             listValues={new Map<Field<any>, any[]>([
                 [lanField, languages],
@@ -167,10 +182,12 @@ export const ProjectUpdate = ({}) => {
                                 {
                                     translation: "spanish",
                                     name: nameSp,
+                                    description: descSp,
                                 },
                                 {
                                     translation: "english",
                                     name: nameEn,
+                                    description: descEn,
                                 },
                             ],
                             repository,
@@ -187,10 +204,12 @@ export const ProjectUpdate = ({}) => {
                                 {
                                     translation: "spanish",
                                     name: nameSp,
+                                    description: descSp,
                                 },
                                 {
                                     translation: "english",
                                     name: nameEn,
+                                    description: descEn,
                                 },
                             ] : undefined,
                             repository: optionals.get(repoField.name) ? repository : undefined,
