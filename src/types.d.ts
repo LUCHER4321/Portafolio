@@ -1,6 +1,7 @@
 export interface NameDTO {
     translation: string;
     name: string;
+    description?: string;
 }
 
 export interface LanguageDTO {
