@@ -6,6 +6,7 @@ import { ProjectDTO } from "../types";
 
 export class Project {
     name: Map<string,string>;
+    description?: Map<string,string | undefined>;
     categories: Category[];
     repository: string;
     website?: string;
@@ -17,6 +18,7 @@ export class Project {
 
     constructor(dto: ProjectDTO) {
         this.name = new Map(dto.name.map(n => [n.translation, n.name]));
+        this.description = new Map(dto.name.map(n => [n.translation, n.description]));
         this.categories = dto.categories.map(c => new Category(c));
         this.repository = dto.repository;
         this.website = dto.website;
@@ -37,6 +39,7 @@ export class Project {
                 backgroundPosition: "center",
             }}>
                 <h2>{project?.name.get(language) ?? [...(project?.name.values() ?? [])][0]}</h2>
+                {project?.description && <p className="text-white">{project.description.get(language)}</p>}
                 <div className="grid grid-cols-1 sm:grid-cols-2">
                     <h3 className="text-white">{codeText("hdr01", language)}</h3>
                     <ImageLink
