@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { NavBar } from "../components/NavBar";
 import { ProjectsPage } from "../components/Projects";
-import { ContactForm } from "../components/ContactFrom";
+import { ContactForm } from "../components/ContactForm";
 import { getCategory } from "../api/categories";
 import { useParams } from "react-router-dom";
 
