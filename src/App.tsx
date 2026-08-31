@@ -8,7 +8,7 @@ import { Language } from './classes/Language';
 import { codeText, codeTextAlt } from './functions/translate';
 import { NavBar } from './components/NavBar';
 import { Category } from './classes/Category';
-import { ContactForm } from './components/ContactFrom';
+import { ContactForm } from './components/ContactForm';
 import { getLanguages } from './api/languages';
 import { getUser } from './api/user';
 import { getCategories } from './api/categories';
