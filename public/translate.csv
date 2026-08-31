@@ -27,3 +27,8 @@ frm02;Correo electrónico;Email
 frm03;Teléfono;Phone
 frm04;Mensaje;Message
 frm05;Enviar;Send
+rqr00;Nombre no incluido;Name required
+rqr01;Email no incluido;Email required
+rqr02;Teléfono no incluido;Phone required
+rqr03;Mensaje no incluido;Message required
+snd00;Mensaje enviado satisfactoriamente;Message sent successfully
