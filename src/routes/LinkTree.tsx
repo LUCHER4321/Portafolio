@@ -3,6 +3,7 @@ import { codeTextAlt } from "../functions/translate";
 import { NavBar } from "../components/NavBar";
 import { PersonalLink } from "../classes/PersonalLink";
 import { links } from "../data/links";
+import { ContactForm } from "../components/ContactForm";
 
 export const LinkTree = () => {
     const [language, setLanguage] = useState(localStorage.getItem("language") ?? "spanish");
@@ -20,6 +21,7 @@ export const LinkTree = () => {
                         {l.name.get(language) ?? [...l.name.values()][0]}
                     </a>)}
             </div>
+            <ContactForm language={language} />
         </>
     )
 };
