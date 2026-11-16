@@ -15,7 +15,7 @@ export const ContactForm = ({language}: {language: string}) => {
     return (
         <div className="w-full flex flex-col items-center">
             <h2 className="text-white">{codeText("stt05", language)}</h2>
-            <form className="grid grid-cols-1 grid-flow-row sm:grid-rows-5 sm:grid-cols-7 sm:w-11/24 mt-4 gap-4">
+            <form className="grid grid-cols-1 grid-flow-row sm:grid-rows-5 sm:grid-cols-7 sm:w-11/24 mt-4 gap-4" id="contact-form">
                 <input
                     type="text"
                     className={inputClass}
