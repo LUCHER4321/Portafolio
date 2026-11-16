@@ -56,7 +56,7 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                         image="https://cdn-icons-png.flaticon.com/512/25/25694.png"
                         height={25}
                         hoverHeight={32}
-                        className="mr-2 image-link-container"
+                        className="mr-2 image-link-container sm:hidden"
                         blank={false}
                     />
                     <div className="hidden sm:flex">
@@ -111,6 +111,9 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                             </tbody>
                         </table>
                     </div>
+                    <button className="flex flex-col bg-white/0! mt-1.5 sm:ml-0 ml-1.5 rounded">
+                        <a className="text-start text-white!" href="#contact-form">{codeText("stt05_a", language)}</a>
+                    </button>
                 </div>
                 <select
                     value={language}
@@ -125,6 +128,14 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                 </select>
             </div>
             <div className="fixed flex sm:hidden bottom-0 right-0 left-0 justify-start mt-4 px-10 bg-[#27273E]/50 h-15">
+                <ImageLink
+                    link="/Portafolio/"
+                    image="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+                    height={25}
+                    hoverHeight={32}
+                    className="mr-2 image-link-container"
+                    blank={false}
+                />
                 {links.filter(l => ["LinkedIn", "GitHub"].includes([...l.name.values()][0])).map((link, index) => (
                     <ImageLink
                         key={index}
