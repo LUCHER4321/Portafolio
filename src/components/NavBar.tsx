@@ -17,28 +17,28 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
     const [projects, setProjects] = useState(false);
     const [categoriesVisible, setCategoriesVisible] = useState(false);
     const [languagesVisible, setLanguagesVisible] = useState(false);
-      const [remoteLan, setRemoteLan] = useState<Language[]>([]);
-      const [remoteCat, setRemoteCat] = useState<Category[]>([]);
-      useEffect(() => {
+    const [remoteLan, setRemoteLan] = useState<Language[]>([]);
+    const [remoteCat, setRemoteCat] = useState<Category[]>([]);
+    useEffect(() => {
         getUser().then(
-          u => {
-            getLanguages({ user: u.id }).then(
-              L => setRemoteLan(
-                L.map(
-                  l => new Language(l)
-                )
-              )
-            );
-            getCategories({ user: u.id }).then(
-              C => setRemoteCat(
-                C.map(
-                  c => new Category(c)
-                )
-              )
-            );
-          }
+            u => {
+                getLanguages({ user: u.id }).then(
+                    L => setRemoteLan(
+                        L.map(
+                            l => new Language(l)
+                        )
+                    )
+                );
+                getCategories({ user: u.id }).then(
+                    C => setRemoteCat(
+                        C.map(
+                            c => new Category(c)
+                        )
+                    )
+                );
+            }
         );
-      }, []);
+    }, []);
     const trLanguages = getLanguageOptions();
 
     const switchProjects = () => {
@@ -111,9 +111,9 @@ export const NavBar = ({language, setLanguage}: NavBarProps) => {
                             </tbody>
                         </table>
                     </div>
-                    <button className="flex flex-col bg-white/0! mt-1.5 sm:ml-0 ml-1.5 rounded">
-                        <a className="text-start text-white!" href="#contact-form">{codeText("stt05_a", language)}</a>
-                    </button>
+                    <div className="flex flex-col ml-0 sm:ml-[1.2em] rounded">
+                        <a className="inline-block rounded-[8px] border border-transparent bg-[#1a1a1a] bg-white/0! px-[1.2em] py-[0.6em] text-[1em] font-medium text-start text-white! transition-[border-color] duration-250 hover:border-[#646cff] focus:outline-4 focus-visible:outline-4 mt-1.5 sm:ml-0 ml-1.5" href="#contact-form">{codeText("stt05_a", language)}</a>
+                    </div>
                 </div>
                 <select
                     value={language}
